@@ -1,0 +1,37 @@
+@import '../../../styles.scss';
+
+.header {
+    background-color: $sparkle-notes-yellow;
+    border-bottom: 1px solid $sparkle-notes-blue;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 5px 8px 5px $sparkle-notes-blue;
+    padding: 10px 20px;
+    font-family: cursive;
+
+    .header-logo {
+        align-items: center;
+        display: flex;
+        width: fit-content;
+        text-decoration: none;
+
+        .logo {
+            height: 60px;
+        }
+
+        .logo-captions {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+
+            .logo-text {
+                height: 20px;
+                width: auto;
+                padding: 6px 0;
+            }
+
+            .logo-description {
+                color: $sparkle-notes-blue;
+            }
+        }
+    }
+}
