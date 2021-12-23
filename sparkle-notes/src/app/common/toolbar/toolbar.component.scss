@@ -1,0 +1,68 @@
+@import "../../../styles.scss";
+
+.menu-container {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 30px;
+
+    .menu-wrapper {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+        .new-button {
+            color: $sparkle-notes-blue;
+
+            .add-new {
+                border: 1px solid $sparkle-notes-blue;
+                border-radius: 999rem;
+                font-weight: 800;
+                font-size: larger;
+                color: $sparkle-notes-blue;
+                background: $sparkle-notes-yellow;
+            }
+        }
+
+        .sort-select {
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            padding-left: 10px;
+        }
+    }
+
+    .goals-button {
+        color: $sparkle-notes-blue;
+
+        .add-goals {
+            background-color: $sparkle-notes-yellow;
+            border: 1px solid $sparkle-notes-blue;
+            border-radius: 999rem;
+            color: $sparkle-notes-blue;
+            margin: 3px;
+        }
+    }
+}
+
+::ng-deep {
+    .color-menu {
+        display: flex;
+        flex-wrap: wrap;
+        width: 120px;
+
+        .add-color {
+            flex: 0 0 25%;
+        }
+    }
+
+    .type-menu {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        width: 120px;
+        padding-left: 10px;
+    }
+}

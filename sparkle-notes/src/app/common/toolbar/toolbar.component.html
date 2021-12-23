@@ -1,0 +1,76 @@
+<div>
+    <div class="menu-container">
+        <div class="menu-wrapper">
+            <div class="new-button">
+                <button mat-stroked-button color="primary" class="add-new" [matMenuTriggerFor]="newMenu">
+                    <mat-icon class="add-icon">add</mat-icon> ADD NEW
+                </button>
+                <mat-menu #newMenu="matMenu">
+                    <div class="type-menu">
+                        <ng-container *ngFor="let type of types">
+                            <button mat-icon-button class="add-type" [title]="type.type">
+                                <div color="type-icon" [style]="'type:'+ type.value ">
+                                    {{type.type}}</div>
+                            </button>
+                        </ng-container>
+                    </div>
+                </mat-menu>
+            </div>
+            <div class="sort-select">
+                <mat-form-field appearance="legacy">
+                    <mat-label>
+                        <mat-icon>sort</mat-icon>Sort By:
+                    </mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let sort of sorts" [value]="sort.value">{{sort.title}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button mat-icon-button color="primary" class="add-goals" title="bin">
+                    <mat-icon class="goal-icon">{{'text_rotate_up'||'text_rotation_down'}}</mat-icon>
+                </button>
+            </div>
+            <div class="sort-select">
+                <mat-form-field appearance="legacy">
+                    <mat-label>
+                        <mat-icon>filter_list</mat-icon>Filter By:
+                    </mat-label>
+                    <mat-select multiple [formControl]="filter">
+                        <mat-select-trigger>
+                            {{filter.value ? getFilterName(filter.value[0]) : ''}}
+                            <span *ngIf="filter.value?.length > 1" class="example-additional-selection">
+                                (+{{filter.value.length - 1}} {{filter.value?.length === 2 ? 'other' : 'others'}})
+                            </span>
+                        </mat-select-trigger>
+                        <mat-option *ngFor="let fil of filters" [value]="fil.value">{{fil.title}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="color-button">
+                <button mat-icon-button class="add-color" [matMenuTriggerFor]="color">
+                    <mat-icon class="color-icon">square</mat-icon>
+                </button>
+                <mat-menu #color="matMenu">
+                    <div class="color-menu">
+                        <ng-container *ngFor="let color of colors">
+                            <button mat-icon-button class="add-color" [title]="color.color">
+                                <mat-icon color="color-icon" [style]="'color:'+ color.value ">
+                                    {{color.value?'square':'disabled_by_default'}}</mat-icon>
+                            </button>
+                        </ng-container>
+                    </div>
+                </mat-menu>
+            </div>
+        </div>
+        <div class="goals-button">
+            <button mat-stroked-button color="primary" class="add-goals">
+                <mat-icon class="goal-icon">flag</mat-icon> ADD 100 GOALS
+            </button>
+            <button mat-stroked-button color="primary" class="add-goals">
+                <mat-icon class="goal-icon">event</mat-icon> VIEW IN CALENDAR
+            </button>
+            <button mat-icon-button color="primary" class="add-goals" title="bin">
+                <mat-icon class="goal-icon">delete_outline</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
