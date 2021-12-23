@@ -15,12 +15,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToolbarComponent } from './common/toolbar/toolbar.component';
+import { AnimationHomepageComponent } from './animation/homepage/homepage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
-    NavbarComponent,
+    NavbarComponent, 
+    AnimationHomepageComponent,
     FooterComponent,
     HomepageComponent,
     ToolbarComponent

@@ -1,0 +1,28 @@
+@import '../../../styles.scss';
+
+
+.pointer {
+    animation: skew 3s infinite;
+    transform: translate(0, 0) skew(0deg);
+    animation-direction: alternate;
+}
+
+.sparkle {
+    border: 1px solid $sparkle-notes-blue;
+    padding:20px;
+    background: $sparkle-notes-white;
+}
+
+.logo {
+    z-index: -10;
+}
+
+@keyframes skew {
+    0% {
+        transform: translate(0, 0) skewX(0deg);
+    }
+
+    100% {
+        transform: translate(-90px, -60px) skewX(20deg);
+    }
+}
