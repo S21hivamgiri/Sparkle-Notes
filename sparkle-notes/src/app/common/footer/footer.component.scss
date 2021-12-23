@@ -1,0 +1,92 @@
+@import '../../../styles.scss';
+
+.footer {
+    background-color: $sparkle-notes-yellow;
+    border-bottom: 1px solid $sparkle-notes-blue;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 0 8px 5px $sparkle-notes-blue;
+    padding: 10px 20px;
+    font-family: cursive;
+
+    .footer-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .divider {
+            height: 100px;
+            border-right-width: 5px;
+            border-right-color: $sparkle-notes-blue;
+        }
+
+        .about {
+            display: flex;
+            flex-direction: column;
+
+            .title {
+                font-weight: bolder;
+                font-size: large;
+                padding: 10px;
+            }
+
+            .email,
+            .phone {
+                padding: 10px;
+
+                .link {
+                    text-decoration: none;
+                    color: $sparkle-notes-blue;
+                    font-weight: 700;
+                }
+            }
+        }
+
+        .copyright {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .title {
+                padding: 10px;
+            }
+
+            .love {
+                padding: 10px;
+
+                .red-text {
+                    color: $sparkle-notes-red;
+                }
+            }
+        }
+
+        .header-logo {
+            align-items: center;
+            display: flex;
+            width: fit-content;
+            text-decoration: none;
+
+
+            .logo {
+                height: 60px;
+            }
+
+
+            .logo-captions {
+                display: flex;
+                flex-direction: column;
+                padding: 10px;
+
+                .logo-text {
+                    height: 20px;
+                    width: 150px;
+                    padding: 6px 0;
+                }
+
+                .logo-description {
+                    color: $sparkle-notes-blue;
+                }
+            }
+        }
+    }
+}
