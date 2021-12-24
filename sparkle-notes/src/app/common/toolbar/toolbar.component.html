@@ -8,7 +8,7 @@
             <mat-menu #newMenu="matMenu">
                 <div class="type-menu">
                     <ng-container *ngFor="let type of types">
-                        <button mat-flat-button class="add-type" [title]="type.type">
+                        <button mat-flat-button class="add-type" [title]="type.type" (click)="routeTo(type.value)">
                             <div class="type-icon" [style]="'type:'+ type.value ">
                                 <mat-icon>{{type.icon}}</mat-icon>{{type.type}}
                             </div>

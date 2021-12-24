@@ -17,6 +17,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToolbarComponent } from './common/toolbar/toolbar.component';
 import { AnimationHomepageComponent } from './animation/homepage/homepage.component';
 import { TextToolComponent } from './common/text-tool/text-tool.component';
+import { NotesComponent } from './components/notes/notes.component';
+import { ThemebarComponent } from './common/themebar/themebar.component';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -27,12 +30,15 @@ import { TextToolComponent } from './common/text-tool/text-tool.component';
     FooterComponent,
     HomepageComponent,
     ToolbarComponent,
-    TextToolComponent
+    TextToolComponent,
+    NotesComponent,
+    ThemebarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatInputModule,
     MatSelectModule,
     MatMenuModule,
     MatDividerModule,

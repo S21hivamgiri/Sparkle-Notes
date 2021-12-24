@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { COMMAND_DATA } from 'src/app/utilities/constants';
+import { Color } from 'src/app/utilities/interfaces';
 
 @Component({
   selector: 'app-text-tool',
@@ -8,7 +9,7 @@ import { COMMAND_DATA } from 'src/app/utilities/constants';
 })
 export class TextToolComponent implements OnInit {
   commands = COMMAND_DATA;
-
+  @Input() theme?: Color
   constructor() { }
 
   ngOnInit(): void {

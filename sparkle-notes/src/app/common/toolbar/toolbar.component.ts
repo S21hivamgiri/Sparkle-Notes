@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { COLOR_DATA, DEFAULT_COLOR_VALUE, FILTER_DATA, SORT_DATA, TYPE_DATA } from 'src/app/utilities/constants';
 
 @Component({
@@ -18,9 +19,10 @@ export class ToolbarComponent implements OnInit {
   sort = new FormControl(this.sorts[0].value);
   sortDsc=false;
   defaultTheme = DEFAULT_COLOR_VALUE
+
   ngOnInit(): void {}
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   getFilterName(data: string) {
     if (data)
@@ -32,5 +34,9 @@ export class ToolbarComponent implements OnInit {
     if (data)
       return this.sorts.filter(a => a.value === data)[0].title;
     else return '';
+  }
+
+  routeTo(data:string){
+    this.router.navigate(['/'+data]);
   }
 }

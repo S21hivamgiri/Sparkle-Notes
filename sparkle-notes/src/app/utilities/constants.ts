@@ -22,7 +22,7 @@ export const COLOR_DATA: Color[] = [
     {
         color: 'GREEN',
         value: '#38A248',
-        light: '#5bd36d',
+        light: '#79d186',
         lightest: '#bfffc8'
     },
     {
@@ -64,8 +64,8 @@ export const COLOR_DATA: Color[] = [
     {
         color: 'CYAN',
         value: '#00FFFF',
-        light: '#72ffff',
-        lightest: '#ceffff'
+        light: '#adffff',
+        lightest: '#e5ffff'
     },
     {
         color: 'PINK',

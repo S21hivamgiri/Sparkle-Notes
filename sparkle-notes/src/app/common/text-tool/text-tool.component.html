@@ -1,12 +1,13 @@
-<div class="toolbar">
+<div class="toolbar" [style.background]="theme?.light">
     <ng-container *ngFor="let item of commands | keyvalue">
-    <div class="subtools" [class]="item.key">
-        <div class="tools" *ngFor="let command of commands[item.key]">
-            <button mat-stroked-icon-button color="primary" class="tool bold" (click)="setOutput(item.key, command.cmd)" [title]="command.title">
-                <mat-icon class="add-icon">{{command.icon}}</mat-icon>
-            </button>
+        <div class="subtools" [class]="item.key">
+            <div class="tools" *ngFor="let command of commands[item.key]">
+                <button mat-stroked-icon-button color="primary" class="tool bold"
+                    (click)="setOutput(item.key, command.cmd)" [title]="command.title">
+                    <mat-icon [style.color]="theme?.value" class="add-icon">{{command.icon}}</mat-icon>
+                </button>
+            </div>
         </div>
-    </div>
     </ng-container>
     <!-- <div class="subtools content">
         <div class="tool-list">

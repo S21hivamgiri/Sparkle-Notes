@@ -1,0 +1,30 @@
+<div class="theme-bar" [style.backgroundColor]="themeColor.light">
+    <div class="color-button">
+        <button mat-icon-button class="add-color" [matMenuTriggerFor]="color">
+            <mat-icon class="main-color-icon" [style]="'color:'+themeColor.value" [title]="themeColor.color">
+                square
+            </mat-icon>
+        </button>
+        <mat-menu #color="matMenu">
+            <div class="color-menu">
+                <ng-container *ngFor="let color of colors">
+                    <button mat-icon-button class="pick-color" [title]="color.color">
+                        <mat-icon color="color-icon" [style]="'color:'+color.value" (click)="setColor(color)">
+                            {{color.color!==themeColor.color?'square':'disabled_by_default'}}
+                        </mat-icon>
+                    </button>
+                </ng-container>
+            </div>
+        </mat-menu>
+    </div>
+    <mat-form-field class="title-bar" appearance="fill">
+        <mat-label>Enter title</mat-label>
+        <input matInput type="text" [(ngModel)]="title" autocomplete="off">
+        <button *ngIf="title" matSuffix mat-icon-button aria-label="Clear" (click)="title=''">
+            <mat-icon>close</mat-icon>
+        </button>
+        <button *ngIf="!title" matSuffix mat-icon-button aria-label="Title">
+            <mat-icon>title</mat-icon>
+        </button>
+    </mat-form-field>
+</div>
