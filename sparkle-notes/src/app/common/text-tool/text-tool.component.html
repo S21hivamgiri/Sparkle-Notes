@@ -1,0 +1,98 @@
+<div class="toolbar">
+    <ng-container *ngFor="let item of commands | keyvalue">
+    <div class="subtools" [class]="item.key">
+        <div class="tools" *ngFor="let command of commands[item.key]">
+            <button mat-stroked-icon-button color="primary" class="tool bold" (click)="setOutput(item.key, command.cmd)" [title]="command.title">
+                <mat-icon class="add-icon">{{command.icon}}</mat-icon>
+            </button>
+        </div>
+    </div>
+    </ng-container>
+    <!-- <div class="subtools content">
+        <div class="tool-list">
+            <button mat-stroked-icon-button color="primary" class="tool cut"(click)="setOutput()" title="Cut">
+                <mat-icon class="add-icon">content_cut</mat-icon>
+            </button>
+        </div>
+        <div class="tool-list">
+            <button mat-stroked-icon-button color="primary" class="tool copy"(click)="setOutput()" title="Copy">
+                <mat-icon class="add-icon">content_copy</mat-icon>
+            </button>
+        </div>
+        <div class="tool-list">
+            <button mat-stroked-icon-button color="primary" class="tool paste"(click)="setOutput()" title="Paste">
+                <mat-icon class="add-icon">content_paste</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div class="subtools edit">
+        <div class="tool-list">
+            <button mat-stroked-icon-button color="primary" class="tool undo"(click)="setOutput()" title="Undo">
+                <mat-icon class="add-icon">undo</mat-icon>
+            </button>
+        </div>
+        <div class="tool-list">
+            <button mat-stroked-icon-button color="primary" class="tool redo"(click)="setOutput()" title="Redo">
+                <mat-icon class="add-icon">redo</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div class="subtools list">
+        <div class="tool-list">
+            <button mat-stroked-icon-button color="primary" class="tool bullet"(click)="setOutput()" title="Bullets">
+                <mat-icon class="add-icon">format_list_bulleted</mat-icon>
+            </button>
+        </div>
+        <div class="tool-list">
+            <button mat-stroked-icon-button color="primary" class="tool numbering"(click)="setOutput()" title="Numbering">
+                <mat-icon class="add-icon">format_list_numbered</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div class="subtools text">
+        <div class="tool-list">
+            <button mat-stroked-icon-button color="primary" class="tool superscript"(click)="setOutput()" title="SuperScript">
+                <mat-icon class="add-icon">superscript</mat-icon>
+            </button>
+        </div>
+        <div class="tool-list">
+            <button mat-stroked-icon-button color="primary" class="tool subscript"(click)="setOutput()" title="Subscript">
+                <mat-icon class="add-icon">subscript</mat-icon>
+            </button>
+        </div>
+        <div class="tool-list">
+            <button mat-stroked-icon-button color="primary" class="tool strikethrough"(click)="setOutput()" title="StrikeThrough">
+                <mat-icon class="add-icon">strikethrough_s</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div class="subtools miscellneous">
+        <div class="tool-list">
+            <button mat-stroked-icon-button color="primary" class="tool link"(click)="setOutput()" title="Create Link">
+                <mat-icon class="add-icon">insert_link</mat-icon>
+            </button>
+        </div>
+        <div class="tool-list">
+            <button mat-stroked-icon-button color="primary" class="tool highlight"(click)="setOutput()" title="Highlight">
+                <mat-icon class="add-icon">grade</mat-icon>
+            </button>
+        </div>
+        <div class="tool-list">
+            <button mat-stroked-icon-button color="primary" class="tool remove-format"(click)="setOutput()" title="Remove Format">
+                <mat-icon class="add-icon">block</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div class="subtools select">
+        <div class="tool-list">
+            <button mat-stroked-icon-button color="primary" class="tool remove"(click)="setOutput()" title="Remove All">
+                <mat-icon class="add-icon">delete_sweep</mat-icon>
+            </button>
+        </div>
+        <div class="tool-list">
+            <button mat-stroked-icon-button color="primary" class="tool select-all"(click)="setOutput()" title="Select All">
+                <mat-icon class="add-icon">select_all</mat-icon>
+            </button>
+        </div>
+    </div>-->
+</div>

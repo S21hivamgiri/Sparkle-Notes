@@ -16,6 +16,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToolbarComponent } from './common/toolbar/toolbar.component';
 import { AnimationHomepageComponent } from './animation/homepage/homepage.component';
+import { TextToolComponent } from './common/text-tool/text-tool.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AnimationHomepageComponent } from './animation/homepage/homepage.compon
     AnimationHomepageComponent,
     FooterComponent,
     HomepageComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    TextToolComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,18 @@
+.toolbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .subtools {
+        display: flex;
+        flex-direction: row;
+        margin: 0 5px;
+
+        .tools {
+            .tool {
+                font-weight: 700;
+            }
+        }
+    }
+}

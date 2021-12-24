@@ -1,7 +1,8 @@
 <div class="menu-container">
     <div class="menu-wrapper">
         <div class="new-button">
-            <button mat-stroked-button color="primary" class="add-new" [matMenuTriggerFor]="newMenu">
+            <button mat-stroked-button color="primary" class="add-new" title="Choose Notes"
+                [matMenuTriggerFor]="newMenu">
                 <mat-icon class="add-icon">add</mat-icon> ADD NEW
             </button>
             <mat-menu #newMenu="matMenu">
@@ -55,7 +56,7 @@
         </div>
         <div class="color-button">
             <button mat-icon-button class="add-color" [matMenuTriggerFor]="color">
-                <mat-icon class="color-icon" [style]="'color:'+themeColor.value">
+                <mat-icon class="color-icon" [style]="'color:'+themeColor.value" [title]="themeColor.color">
                     {{themeColor.value?'square':'disabled_by_default'}}</mat-icon>
             </button>
             <mat-menu #color="matMenu">

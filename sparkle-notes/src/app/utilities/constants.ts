@@ -1,4 +1,4 @@
-import { Color, Filter, Sort, Type } from "./interfaces";
+import { Color, Command, Filter, Sort, Type } from "./interfaces";
 
 export const COLOR_DATA: Color[] = [
     {
@@ -95,11 +95,27 @@ export const FILTER_DATA: Filter[] = [
 ]
 
 export const TYPE_DATA: Type[] = [
+    { value: 'note', type: 'Notes', icon: 'description' },
     { value: 'checkList', type: 'Checklists', icon: 'checklist' },
     { value: 'todo', type: 'ToDos', icon: 'pending_actions' },
-    { value: 'note', type: 'Notes', icon: 'description' },
     { value: 'event', type: 'Events', icon: 'notifications' },
     { value: 'goals', type: '100 Goals', icon: 'auto_graph' },
 ]
+
+const FORMAT_COMMAND_DATA: Command[] = [
+    { cmd: 'bold', title: 'Bold', icon: 'format_bold' },
+    { cmd: 'italics', title: 'Italics', icon: 'format_italic' },
+    { cmd: 'underline', title: 'Underline', icon: 'format_underlined' },
+]
+
+const TOOLS_COMMAND_DATA: Command[]=[
+    { cmd: 'preview', title: 'Preview', icon: 'visibility' },
+    { cmd: 'html', title: 'View HTML', icon: 'code' },
+]
+
+export const COMMAND_DATA:{[key:string]:Command[]}={
+    tools: TOOLS_COMMAND_DATA,
+    format: FORMAT_COMMAND_DATA
+}
 
 export const DEFAULT_COLOR_VALUE: Color = { color: 'No Color', value: '' }
