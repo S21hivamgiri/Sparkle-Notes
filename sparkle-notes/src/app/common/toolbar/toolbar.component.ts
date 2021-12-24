@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { COLOR_DATA, DEFAULT_VALUE, FILTER_DATA, SORT_DATA, TYPE_DATA } from 'src/app/utilities/constants';
+import { COLOR_DATA, DEFAULT_COLOR_VALUE, FILTER_DATA, SORT_DATA, TYPE_DATA } from 'src/app/utilities/constants';
 
 @Component({
   selector: 'app-toolbar',
@@ -8,7 +8,7 @@ import { COLOR_DATA, DEFAULT_VALUE, FILTER_DATA, SORT_DATA, TYPE_DATA } from 'sr
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
-  @Input() themeColor = DEFAULT_VALUE;
+  @Input() themeColor = DEFAULT_COLOR_VALUE;
 
   colors = COLOR_DATA;
   filters = FILTER_DATA;
@@ -17,8 +17,8 @@ export class ToolbarComponent implements OnInit {
   filter = new FormControl();
   sort = new FormControl(this.sorts[0].value);
   sortDsc=false;
-  ngOnInit(): void {
-  }
+  defaultTheme = DEFAULT_COLOR_VALUE
+  ngOnInit(): void {}
 
   constructor() { }
 

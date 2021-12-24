@@ -30,8 +30,9 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <button mat-icon-button color="primary" class="add-goals" title="bin" (click)="sortDsc=!sortDsc">
-                <mat-icon class="goal-icon">{{!sortDsc?'text_rotate_up':'text_rotation_down'}}</mat-icon>
+            <button mat-icon-button color="primary" class="add-goals"
+                [title]="!sortDsc?'Sort Ascending':'Sort Decending'" (click)="sortDsc=!sortDsc">
+                <mat-icon class="goal-icon">{{sortDsc?'text_rotate_up':'text_rotation_down'}}</mat-icon>
             </button>
         </div>
         <div class="sort-select">
@@ -54,13 +55,17 @@
         </div>
         <div class="color-button">
             <button mat-icon-button class="add-color" [matMenuTriggerFor]="color">
-                <mat-icon class="color-icon" [style]="'color:'+themeColor.value">{{themeColor.value?'square':'disabled_by_default'}}</mat-icon>
+                <mat-icon class="color-icon" [style]="'color:'+themeColor.value">
+                    {{themeColor.value?'square':'disabled_by_default'}}</mat-icon>
             </button>
             <mat-menu #color="matMenu">
                 <div class="color-menu">
                     <ng-container *ngFor="let color of colors">
-                        <button mat-icon-button class="add-color" [title]="color.color===themeColor.color?'No Color':color.color">
-                            <mat-icon color="color-icon" [style]="'color:'+ (color.color!==themeColor.color?color.value:'')" (click)="color.color!==themeColor.color?(themeColor=color):themeColor={color:'No Color', value:''}">
+                        <button mat-icon-button class="add-color"
+                            [title]="color.color===themeColor.color?'No Color':color.color">
+                            <mat-icon color="color-icon"
+                                [style]="'color:'+ (color.color!==themeColor.color?color.value:'')"
+                                (click)="color.color!==themeColor.color?(themeColor=color):themeColor=defaultTheme">
                                 {{color.color!==themeColor.color?'square':'disabled_by_default'}}
                             </mat-icon>
                         </button>
@@ -71,7 +76,7 @@
     </div>
     <div class="goals-button">
         <button mat-stroked-button color="primary" class="add-goals">
-            <mat-icon class="goal-icon">flag</mat-icon> ADD 100 GOALS
+            <mat-icon class="goal-icon">auto_graph</mat-icon> ADD 100 GOALS
         </button>
         <button mat-stroked-button color="primary" class="add-goals">
             <mat-icon class="goal-icon">event</mat-icon> VIEW IN CALENDAR
