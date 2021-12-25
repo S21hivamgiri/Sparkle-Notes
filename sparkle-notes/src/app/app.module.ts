@@ -17,10 +17,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToolbarComponent } from './common/toolbar/toolbar.component';
 import { AnimationHomepageComponent } from './animation/homepage/homepage.component';
 import { TextToolComponent } from './common/text-tool/text-tool.component';
-import { NotesComponent } from './components/notes/notes.component';
 import { ThemebarComponent } from './common/themebar/themebar.component';
 import { MatInputModule } from '@angular/material/input';
 import { EditorComponent } from './common/editor/editor.component';
+import { AddNotesComponent } from './components/add-notes/add-notes.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +32,9 @@ import { EditorComponent } from './common/editor/editor.component';
     HomepageComponent,
     ToolbarComponent,
     TextToolComponent,
-    NotesComponent,
     ThemebarComponent,
-    EditorComponent
+    EditorComponent,
+    AddNotesComponent
   ],
   imports: [
     BrowserModule,

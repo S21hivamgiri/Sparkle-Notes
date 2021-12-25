@@ -108,13 +108,20 @@ const FORMAT_COMMAND_DATA: Command[] = [
     { cmd: 'underline', title: 'Underline', icon: 'format_underlined' },
 ]
 
+const TEXT_COMMAND_DATA: Command[] = [
+    { cmd: 'superscript', title: 'SuperScript', icon: 'superscript' },
+    { cmd: 'subscript', title: 'SubScript', icon: 'subscript' },
+    { cmd: 'strikethrough', title: 'StrikeThrough', icon: 'strikethrough_s' },
+]
+
 const MISCELLINEOUS_COMMAND_DATA: Command[]=[
     { cmd: 'preview', title: 'Preview', icon: 'visibility' },
 ]
 
 export const COMMAND_DATA:{[key:string]:Command[]}={
+    text: TEXT_COMMAND_DATA,
+    format: FORMAT_COMMAND_DATA,
     miscellineous: MISCELLINEOUS_COMMAND_DATA,
-    format: FORMAT_COMMAND_DATA
 }
 
 export const DEFAULT_COLOR_VALUE: Color = { color: 'No Color', value: '' }

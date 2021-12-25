@@ -1,10 +1,12 @@
 <div class="toolbar" [style.background]="theme?.light">
-    <ng-container *ngFor="let item of commands | keyvalue">
+    <ng-container *ngFor="let item of commands | keyvalue : returnZero">
         <div class="subtools" [class]="item.key">
             <div class="tools" *ngFor="let command of commands[item.key]">
                 <button mat-stroked-icon-button color="primary" class="tool bold"
                     (click)="setOutput(item.key, command.cmd)" [title]="command.title">
-                    <mat-icon [style.color]="theme?.value" class="add-icon">{{command.icon}}</mat-icon>
+                    <mat-icon [style.color]="getStyle(item.key, command.cmd)?(theme?.value):'#000000'" class="add-icon">
+                        {{command.icon}}
+                    </mat-icon>
                 </button>
             </div>
         </div>
@@ -47,23 +49,6 @@
         <div class="tool-list">
             <button mat-stroked-icon-button color="primary" class="tool numbering"(click)="setOutput()" title="Numbering">
                 <mat-icon class="add-icon">format_list_numbered</mat-icon>
-            </button>
-        </div>
-    </div>
-    <div class="subtools text">
-        <div class="tool-list">
-            <button mat-stroked-icon-button color="primary" class="tool superscript"(click)="setOutput()" title="SuperScript">
-                <mat-icon class="add-icon">superscript</mat-icon>
-            </button>
-        </div>
-        <div class="tool-list">
-            <button mat-stroked-icon-button color="primary" class="tool subscript"(click)="setOutput()" title="Subscript">
-                <mat-icon class="add-icon">subscript</mat-icon>
-            </button>
-        </div>
-        <div class="tool-list">
-            <button mat-stroked-icon-button color="primary" class="tool strikethrough"(click)="setOutput()" title="StrikeThrough">
-                <mat-icon class="add-icon">strikethrough_s</mat-icon>
             </button>
         </div>
     </div>

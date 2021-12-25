@@ -2,8 +2,7 @@ export interface Color {
     color: string;
     value: string;
     light?: string;
-    lightest?: string;
-    
+    lightest?: string;   
 }
 
 export interface Sort {
@@ -28,4 +27,14 @@ export interface Command {
     cmd: string;
     title: string;
     icon: string;
+}
+
+export interface CommandActive {
+    cmd: string;
+    active: boolean
+}
+
+export interface GroupCommandActive {
+    group: string; 
+    value: CommandActive[]
 }

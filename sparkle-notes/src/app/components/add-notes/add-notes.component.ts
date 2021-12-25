@@ -1,19 +1,19 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Color } from 'src/app/utilities/interfaces';
+import { Color, GroupCommandActive } from 'src/app/utilities/interfaces';
 import { EditorComponent } from 'src/app/common/editor/editor.component';
 
 @Component({
-  selector: 'app-notes',
-  templateUrl: './notes.component.html',
-  styleUrls: ['./notes.component.scss']
+  selector: 'app-add-notes',
+  templateUrl: './add-notes.component.html',
+  styleUrls: ['./add-notes.component.scss']
 })
-export class NotesComponent implements OnInit {
-  @ViewChild('editor') editor?: EditorComponent;
-  
-  themeColor?: Color;
-  content = ''
-  contentValue = false;
+export class AddNotesComponent implements OnInit {
 
+  @ViewChild('editor') editor?: EditorComponent;
+  themeColor?: Color;
+  content = '';
+  contentValue = false;
+  setActive?: GroupCommandActive[];
   constructor() { }
 
   ngOnInit(): void {
@@ -23,7 +23,7 @@ export class NotesComponent implements OnInit {
     this.contentValue = e;
   }
 
-  executeCommand(e:string){
+  executeCommand(e: string) {
     this.editor?.executeCommand(e);
   }
 
@@ -31,10 +31,8 @@ export class NotesComponent implements OnInit {
     this.content = data;
   }
 
-  save() {
+  save() { }
 
-  }
-  
   setTheme(data: Color) {
     this.themeColor = data;
   }

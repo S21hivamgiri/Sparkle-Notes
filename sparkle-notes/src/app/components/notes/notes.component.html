@@ -1,5 +1,0 @@
-<app-themebar [contentStarted]="contentValue" (save)="save()"(theme)="setTheme($event)"></app-themebar>
-<div class="notes">
-    <app-text-tool (command)="executeCommand($event)" [theme]="themeColor"></app-text-tool>
-    <app-editor #editor [theme]="themeColor" (hasValue)="isContentStarted($event)" (editorContent)="setContent($event);"></app-editor>
-</div>
