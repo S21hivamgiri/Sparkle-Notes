@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { COMMAND_DATA } from 'src/app/utilities/constants';
 import { Color } from 'src/app/utilities/interfaces';
 
@@ -9,14 +9,15 @@ import { Color } from 'src/app/utilities/interfaces';
 })
 export class TextToolComponent implements OnInit {
   commands = COMMAND_DATA;
-  @Input() theme?: Color
+  @Input() theme?: Color;
+  @Output() command = new EventEmitter<string>()
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  setOutput(key: string, value: string) {
-
+  setOutput(group: string, command: string) {
+    this.command.emit(command);
   }
 
 }

@@ -8,8 +8,8 @@
         <mat-menu #color="matMenu">
             <div class="color-menu">
                 <ng-container *ngFor="let color of colors">
-                    <button mat-icon-button class="pick-color" [title]="color.color">
-                        <mat-icon color="color-icon" [style]="'color:'+color.value" (click)="setColor(color)">
+                    <button mat-icon-button class="pick-color" [title]="color.color" (click)="setColor(color)">
+                        <mat-icon color="color-icon" [style]="'color:'+color.value">
                             {{color.color!==themeColor.color?'square':'disabled_by_default'}}
                         </mat-icon>
                     </button>
@@ -20,11 +20,16 @@
     <mat-form-field class="title-bar" appearance="fill">
         <mat-label>Enter title</mat-label>
         <input matInput type="text" [(ngModel)]="title" autocomplete="off">
-        <button *ngIf="title" matSuffix mat-icon-button aria-label="Clear" (click)="title=''">
+        <button *ngIf="title" matSuffix mat-icon-button aria-label="Clear" title="Clear" (click)="title=''">
             <mat-icon>close</mat-icon>
         </button>
-        <button *ngIf="!title" matSuffix mat-icon-button aria-label="Title">
+        <button *ngIf="!title" matSuffix mat-icon-button aria-label="Title" title="Enter Title Here">
             <mat-icon>title</mat-icon>
         </button>
     </mat-form-field>
+    <button mat-icon-button class="save-color" (click)="saveContent()" [disabled]="!(contentStarted && title)">
+        <mat-icon class="color-icon" [style]="'color:'+themeColor.value" title="Save">
+            send
+        </mat-icon>
+    </button>
 </div>

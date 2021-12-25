@@ -6,6 +6,7 @@
     height: 100px;
     justify-content: start;
     padding: 0 $sparkle-body-margin;
+    border-radius: 0 0 50px 50px;
 
     .add-color {
         border: 4px solid $sparkle-notes-black;
@@ -19,6 +20,22 @@
             font-size: 40px;
             height: 40px;
             width: 40px;
+        }
+    }
+
+    .save-color {
+        margin-left: 20px;
+        border-radius: 0;
+
+        &.mat-button-disabled {
+            opacity: 0.4
+        }
+
+        .color-icon {
+            font-size: 40px;
+            height: 40px;
+            width: 40px;
+            line-height: 40px;
         }
     }
 

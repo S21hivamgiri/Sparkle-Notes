@@ -20,6 +20,7 @@ import { TextToolComponent } from './common/text-tool/text-tool.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { ThemebarComponent } from './common/themebar/themebar.component';
 import { MatInputModule } from '@angular/material/input';
+import { EditorComponent } from './common/editor/editor.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MatInputModule } from '@angular/material/input';
     ToolbarComponent,
     TextToolComponent,
     NotesComponent,
-    ThemebarComponent
+    ThemebarComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,

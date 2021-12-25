@@ -1,0 +1,21 @@
+@import '../../../styles.scss';
+
+.background-editor {
+    height: 50vh;
+    border: 1px solid;
+
+    .main-editor {
+        height: 50vh;
+        max-height: 50vh;
+        line-height: 30px;
+        border-left: 5px double;
+        border-right: 5px double;
+        margin: 0 60px;
+        overflow-y: auto;
+        font-family: 'Times New Roman', Times, serif;
+
+        &:focus {
+            outline: 0;
+        }
+    }
+}

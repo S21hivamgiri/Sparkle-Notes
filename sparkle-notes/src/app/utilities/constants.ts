@@ -41,13 +41,13 @@ export const COLOR_DATA: Color[] = [
         color: 'ORANGE',
         value: '#FF7F00',
         light: '#ffb168',
-        lightest: '#ffc289'
+        lightest: '#fce7d4'
     },
     {
         color: 'YELLOW',
         value: '#ffc700',
-        light: '#ffd756',
-        lightest: '#ffe79b'
+        light: '#ffdd77',
+        lightest: '#fff6db'
     },
     {
         color: 'VIOLET',
@@ -104,17 +104,16 @@ export const TYPE_DATA: Type[] = [
 
 const FORMAT_COMMAND_DATA: Command[] = [
     { cmd: 'bold', title: 'Bold', icon: 'format_bold' },
-    { cmd: 'italics', title: 'Italics', icon: 'format_italic' },
+    { cmd: 'italic', title: 'Italics', icon: 'format_italic' },
     { cmd: 'underline', title: 'Underline', icon: 'format_underlined' },
 ]
 
-const TOOLS_COMMAND_DATA: Command[]=[
+const MISCELLINEOUS_COMMAND_DATA: Command[]=[
     { cmd: 'preview', title: 'Preview', icon: 'visibility' },
-    { cmd: 'html', title: 'View HTML', icon: 'code' },
 ]
 
 export const COMMAND_DATA:{[key:string]:Command[]}={
-    tools: TOOLS_COMMAND_DATA,
+    miscellineous: MISCELLINEOUS_COMMAND_DATA,
     format: FORMAT_COMMAND_DATA
 }
 

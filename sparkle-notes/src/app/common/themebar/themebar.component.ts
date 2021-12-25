@@ -10,14 +10,20 @@ import { Color } from 'src/app/utilities/interfaces';
 export class ThemebarComponent implements OnInit {
   @Input() themeColor = COLOR_DATA[3];
   @Input() title = '';
+  @Input() contentStarted = false;
   @Output() theme = new EventEmitter<Color>();
+  @Output() save = new EventEmitter();
 
   constructor() { }
 
   colors = COLOR_DATA;
-  
+
   ngOnInit(): void {
     this.theme.emit(this.themeColor);
+  }
+
+  saveContent() {
+    this.save.emit();
   }
 
   setColor(color: Color) {
