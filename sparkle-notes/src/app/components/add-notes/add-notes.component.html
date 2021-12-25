@@ -1,6 +1,6 @@
 <app-themebar [contentStarted]="contentValue" (save)="save()" (theme)="setTheme($event)"></app-themebar>
 <div class="notes">
-    <app-text-tool  [active]="setActive" (command)="executeCommand($event)" [theme]="themeColor"></app-text-tool>
+    <app-text-tool  [active]="setActive" (removeAllText)="removeAll()" (selectAllText)="selectAll()" (command)="executeCommand($event)" [theme]="themeColor"></app-text-tool>
     <app-editor (active)="setActive=$event" #editor [theme]="themeColor" (hasValue)="isContentStarted($event)"
         (editorContent)="setContent($event);"></app-editor>
 </div>

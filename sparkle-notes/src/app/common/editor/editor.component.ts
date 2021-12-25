@@ -35,15 +35,21 @@ export class EditorComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.renderer.setProperty(this.editorBar?.nativeElement, 'innerHTML', this.content);
+    this.renderer.setProperty(this.editorBar?.nativeElement, 'innerHTML', this.content || '<span></span>');
   }
 
-  setSelection(e: Event) {
+  setSelection() {
     let text = window.getSelection();
     if (text?.type === 'Range') {
       this.getActive(text.getRangeAt(0).startContainer?.parentNode as HTMLElement);
       this.active.emit(this.commands);
     }
+  }
+  
+  removeAll(){
+    this.content = '< span > </span>';
+    this.renderer.setProperty(this.editorBar?.nativeElement, 'innerHTML', '<span></span>');
+    this.hasValue.emit(false);
   }
 
   getActive(parent: HTMLElement) {
@@ -79,6 +85,9 @@ export class EditorComponent implements AfterViewInit {
   inputContent(e: Event) {
     let targetText = (e.target as HTMLInputElement).innerText;
     this.hasValue.emit(targetText ? true : false);
+    if (targetText===''){
+      this.renderer.setProperty(this.editorBar?.nativeElement, 'innerHTML', '<span></span>');
+    }
   }
 
   executeCommand(e: string, value?: string) {

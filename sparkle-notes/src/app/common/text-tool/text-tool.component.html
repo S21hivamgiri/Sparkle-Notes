@@ -1,5 +1,5 @@
 <div class="toolbar" [style.background]="theme?.light">
-    <ng-container *ngFor="let item of commands | keyvalue : returnZero">
+    <ng-container *ngFor="let item of commands | keyvalue">
         <div class="subtools" [class]="item.key">
             <div class="tools" *ngFor="let command of commands[item.key]">
                 <button mat-stroked-icon-button color="primary" class="tool bold"
@@ -11,74 +11,99 @@
             </div>
         </div>
     </ng-container>
-    <!-- <div class="subtools content">
+    <div class="subtools miscellneous">
         <div class="tool-list">
-            <button mat-stroked-icon-button color="primary" class="tool cut"(click)="setOutput()" title="Cut">
-                <mat-icon class="add-icon">content_cut</mat-icon>
+            <button mat-stroked-icon-button color="primary" class="tool link" title="Remove Link" 
+             (click)="setOutput('miscellneous','unlink')">
+                <mat-icon class="add-icon">link_off</mat-icon>
             </button>
+            <button mat-stroked-icon-button color="primary" class="tool link" [matMenuTriggerFor]="anchor"
+                #anchorMenuTrigger="matMenuTrigger" title="Create Link">
+                <mat-icon class="add-icon">insert_link</mat-icon>
+            </button>
+            <mat-menu #anchor="matMenu">
+                <form (click)="$event.stopPropagation()">
+                    <mat-form-field class="example-form-field" appearance="fill">
+                        <mat-label>Anchor Link</mat-label>
+                        <input matInput type="text" [formControl]="anchorLink">
+                        <button *ngIf="anchorLink.value" matSuffix mat-icon-button aria-label="Clear"
+                            (click)="anchorLink.patchValue('')">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                        <mat-error *ngIf="anchorLink.hasError('pattern') && !anchorLink.hasError('required')">
+                            Please enter a valid web address
+                        </mat-error>
+                        <mat-error *ngIf="anchorLink.hasError('required')">
+                            Web address is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <button mat-icon-button color="primary" class="Submit Link" [disabled]="!anchorLink.valid"
+                        (click)="setOutput('miscellneous','createLink', anchorLink.value);anchorMenuTrigger.closeMenu()"
+                        title="Add Anchor to Link">
+                        <mat-icon class="add-icon">send</mat-icon>
+                    </button>
+                </form>
+            </mat-menu>
+        </div>
+        <div class="tool-list miscellneous">
+            <button mat-stroked-icon-button color="primary" class="tool highlight" [matMenuTriggerFor]="highlight"
+                title="Highlight">
+                <mat-icon class="add-icon">grade</mat-icon>
+            </button>
+            <mat-menu #highlight="matMenu">
+                <div style="display:flex;">
+                    <button mat-icon-button (click)="setOutput('miscellneous','backColor','transparent')">
+                        <mat-icon [style.color]="'#000000'">disabled_by_default</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="setOutput('miscellneous','backColor','#A6C14B')">
+                        <mat-icon [style.color]="'#A6C14B'">square</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="setOutput('miscellneous','backColor','#E58B79')">
+                        <mat-icon [style.color]="'#E58B79'">square</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="setOutput('miscellneous','backColor','#B865BA')">
+                        <mat-icon [style.color]="'#B865BA'">square</mat-icon>
+                    </button>
+                </div>
+            </mat-menu>
         </div>
         <div class="tool-list">
-            <button mat-stroked-icon-button color="primary" class="tool copy"(click)="setOutput()" title="Copy">
-                <mat-icon class="add-icon">content_copy</mat-icon>
-            </button>
-        </div>
-        <div class="tool-list">
-            <button mat-stroked-icon-button color="primary" class="tool paste"(click)="setOutput()" title="Paste">
-                <mat-icon class="add-icon">content_paste</mat-icon>
+            <button mat-stroked-icon-button color="primary" class="tool remove-format"
+                (click)="setOutput('miscellneous','removeFormat')" title="Remove Formatting">
+                <mat-icon class="add-icon">block</mat-icon>
             </button>
         </div>
     </div>
     <div class="subtools edit">
         <div class="tool-list">
-            <button mat-stroked-icon-button color="primary" class="tool undo"(click)="setOutput()" title="Undo">
+            <button mat-stroked-icon-button color="primary" class="tool undo" (click)="setOutput('edit','undo')"
+                title="Undo">
                 <mat-icon class="add-icon">undo</mat-icon>
             </button>
         </div>
         <div class="tool-list">
-            <button mat-stroked-icon-button color="primary" class="tool redo"(click)="setOutput()" title="Redo">
+            <button mat-stroked-icon-button color="primary" class="tool redo" (click)="setOutput('edit','redo')"
+                title="Redo">
                 <mat-icon class="add-icon">redo</mat-icon>
             </button>
         </div>
     </div>
-    <div class="subtools list">
-        <div class="tool-list">
-            <button mat-stroked-icon-button color="primary" class="tool bullet"(click)="setOutput()" title="Bullets">
-                <mat-icon class="add-icon">format_list_bulleted</mat-icon>
-            </button>
-        </div>
-        <div class="tool-list">
-            <button mat-stroked-icon-button color="primary" class="tool numbering"(click)="setOutput()" title="Numbering">
-                <mat-icon class="add-icon">format_list_numbered</mat-icon>
-            </button>
-        </div>
-    </div>
-    <div class="subtools miscellneous">
-        <div class="tool-list">
-            <button mat-stroked-icon-button color="primary" class="tool link"(click)="setOutput()" title="Create Link">
-                <mat-icon class="add-icon">insert_link</mat-icon>
-            </button>
-        </div>
-        <div class="tool-list">
-            <button mat-stroked-icon-button color="primary" class="tool highlight"(click)="setOutput()" title="Highlight">
-                <mat-icon class="add-icon">grade</mat-icon>
-            </button>
-        </div>
-        <div class="tool-list">
-            <button mat-stroked-icon-button color="primary" class="tool remove-format"(click)="setOutput()" title="Remove Format">
-                <mat-icon class="add-icon">block</mat-icon>
-            </button>
-        </div>
-    </div>
+
     <div class="subtools select">
         <div class="tool-list">
-            <button mat-stroked-icon-button color="primary" class="tool remove"(click)="setOutput()" title="Remove All">
+            <button mat-stroked-icon-button color="primary" class="tool remove" title="Remove All"  (click)="removeAll()">
                 <mat-icon class="add-icon">delete_sweep</mat-icon>
             </button>
         </div>
         <div class="tool-list">
-            <button mat-stroked-icon-button color="primary" class="tool select-all"(click)="setOutput()" title="Select All">
+            <button mat-stroked-icon-button color="primary" class="tool select-all" title="Select All"  (click)="selectAll()">
                 <mat-icon class="add-icon">select_all</mat-icon>
             </button>
         </div>
-    </div>-->
+        <div class="tool-list">
+            <button mat-stroked-icon-button color="primary" class="tool preview" title="Preview">
+                <mat-icon class="add-icon">visibility</mat-icon>
+            </button>
+        </div>
+    </div>
 </div>

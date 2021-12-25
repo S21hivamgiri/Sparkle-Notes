@@ -19,12 +19,24 @@ export class AddNotesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  selectAll() {
+    document.getElementById('editor')!.focus();
+    let range = document.createRange();
+    range.selectNode(document.getElementById('editor')!);
+    window.getSelection()?.removeAllRanges();
+    window.getSelection()?.addRange(range);
+  }
+
+  removeAll(){
+    this.editor?.removeAll();
+  }
+
   isContentStarted(e: boolean) {
     this.contentValue = e;
   }
 
-  executeCommand(e: string) {
-    this.editor?.executeCommand(e);
+  executeCommand(e: {[key:string]:string}) {
+    this.editor?.executeCommand(e['cmd'], e['val']);
   }
 
   setContent(data: string) {
