@@ -63,9 +63,9 @@ export const COLOR_DATA: Color[] = [
     },
     {
         color: 'CYAN',
-        value: '#00FFFF',
-        light: '#adffff',
-        lightest: '#e5ffff'
+        value: '#00B4AB',
+        light: '#37FFF5',
+        lightest: '#A5FFFB'
     },
     {
         color: 'PINK',
@@ -83,7 +83,6 @@ export const SORT_DATA: Sort[] = [
     { value: 'color', title: 'Color', icon: 'palette' },
     { value: 'type', title: 'Content Type', icon: 'category' }
 ]
-
 
 export const FILTER_DATA: Filter[] = [
     { value: 'checkList', title: 'Checklists', icon: 'checklist' },

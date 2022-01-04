@@ -1,7 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { COMMAND_DATA } from 'src/app/utilities/constants';
 import { Color, CommandActive, GroupCommandActive } from 'src/app/utilities/interfaces';
+
+import { MatMenuTrigger } from '@angular/material/menu';
 const reg = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/
 
 @Component({
@@ -10,6 +12,7 @@ const reg = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169
   styleUrls: ['./text-tool.component.scss']
 })
 export class TextToolComponent implements OnInit {
+  @ViewChild('anchorMenuTrigger') anchorMenuTrigger?: MatMenuTrigger;
   anchorLink = new FormControl('', [Validators.required, Validators.pattern(reg)])
   commands = COMMAND_DATA;
   @Input() theme?: Color;
@@ -44,6 +47,17 @@ export class TextToolComponent implements OnInit {
       }
     });
     return flag;
+  }
+
+  setAnchorLink(event:Event) {
+    if (this.getStyle('miscellneous', 'link')) {
+      this.setOutput('miscellneous', 'unlink');
+      this.anchorMenuTrigger?.closeMenu();
+      event.stopPropagation();
+    }
+    else {
+      this.anchorMenuTrigger?.openMenu();
+    }
   }
 
   setOutput(group: string, command: string, value?: string) {

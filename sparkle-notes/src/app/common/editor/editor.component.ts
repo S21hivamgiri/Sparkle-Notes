@@ -15,6 +15,7 @@ export class EditorComponent implements AfterViewInit {
   @Output() hasValue = new EventEmitter<boolean>()
   @Output() active = new EventEmitter<GroupCommandActive[]>()
   commands?: GroupCommandActive[];
+  selection?:{start:number, end:number};
 
   constructor(private renderer: Renderer2) {
     let d: GroupCommandActive[] = []
@@ -30,6 +31,12 @@ export class EditorComponent implements AfterViewInit {
       });
       a.value = c;
       d.push(a);
+      d.push({
+        group: 'miscellneous', value: [{
+          cmd: 'link',
+          active: false
+        }]
+      })
     }
     this.commands = d;
   }
@@ -40,14 +47,15 @@ export class EditorComponent implements AfterViewInit {
 
   setSelection() {
     let text = window.getSelection();
+    this.selection= this.saveSelection(document.getElementById('editor')!)
     if (text?.type === 'Range') {
       this.getActive(text.getRangeAt(0).startContainer?.parentNode as HTMLElement);
       this.active.emit(this.commands);
     }
   }
-  
-  removeAll(){
-    this.content = '< span > </span>';
+
+  removeAll() {
+    this.content = '<span > </span>';
     this.renderer.setProperty(this.editorBar?.nativeElement, 'innerHTML', '<span></span>');
     this.hasValue.emit(false);
   }
@@ -67,6 +75,10 @@ export class EditorComponent implements AfterViewInit {
         if (value.cmd === 'subscript') {
           value.active = parent?.style.getPropertyValue('vertical-align') === 'sub'
         }
+        if (value.cmd === 'link') {
+          console.log(parent?.getAttribute('href'))
+          value.active = parent?.getAttribute('href') !== null;
+        }
         if (value.cmd === 'superscript') {
           value.active = parent?.style.getPropertyValue('vertical-align') === 'super'
         }
@@ -85,17 +97,64 @@ export class EditorComponent implements AfterViewInit {
   inputContent(e: Event) {
     let targetText = (e.target as HTMLInputElement).innerText;
     this.hasValue.emit(targetText ? true : false);
-    if (targetText===''){
+    if (targetText === '') {
       this.renderer.setProperty(this.editorBar?.nativeElement, 'innerHTML', '<span></span>');
     }
   }
 
   executeCommand(e: string, value?: string) {
+    this.restoreSelection(document.getElementById('editor')!)
     let sel = window.getSelection();
     document.designMode = "on";
     document.execCommand('styleWithCSS', false, 'true');
     document.execCommand(e, false, value);
     document.designMode = "off";
     sel?.removeAllRanges();
+  }
+
+  saveSelection(containerEl: HTMLElement) {
+    let doc = containerEl.ownerDocument, win = doc.defaultView;
+    let range = win?.getSelection()?.getRangeAt(0);
+    let preSelectionRange = range?.cloneRange();
+    preSelectionRange?.selectNodeContents(containerEl);
+    preSelectionRange?.setEnd(range!.startContainer, range!.startOffset);
+    let start = preSelectionRange!.toString().length;
+
+    return {
+      start: start,
+      end: start + range!.toString().length
+    };
+  }
+
+  restoreSelection(containerEl:Node){
+    let doc = containerEl.ownerDocument, win = doc!.defaultView;
+    let charIndex = 0, range = doc!.createRange();
+    range.setStart(containerEl, 0);
+    range.collapse(true);
+    let nodeStack = [containerEl], node:any, foundStart = false, stop = false;
+
+    while (!stop && (node = nodeStack.pop())) {
+      if (node.nodeType == Node.TEXT_NODE) {
+        let nextCharIndex = charIndex + node.length;
+        if (!foundStart && this.selection!.start >= charIndex && this.selection!.start <= nextCharIndex) {
+          range.setStart(node, this.selection!.start - charIndex);
+          foundStart = true;
+        }
+        if (foundStart && this.selection!.end >= charIndex && this.selection!.end <= nextCharIndex) {
+          range.setEnd(node, this.selection!.end - charIndex);
+          stop = true;
+        }
+        charIndex = nextCharIndex;
+      } else {
+        var i = node.childNodes.length;
+        while (i--) {
+          nodeStack.push(node.childNodes[i]);
+        }
+      }
+    }
+
+    let sel = win?.getSelection();
+    sel?.removeAllRanges();
+    sel?.addRange(range);
   }
 }

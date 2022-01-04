@@ -13,13 +13,16 @@
     </ng-container>
     <div class="subtools miscellneous">
         <div class="tool-list">
-            <button mat-stroked-icon-button color="primary" class="tool link" title="Remove Link" 
-             (click)="setOutput('miscellneous','unlink')">
-                <mat-icon class="add-icon">link_off</mat-icon>
+            <button mat-stroked-icon-button color="primary" class="tool link" (click)="setAnchorLink($event)"
+                [matMenuTriggerFor]="anchor" #anchorMenuTrigger="matMenuTrigger"
+                [title]="getStyle('miscellneous', 'link')?'Create Link':'UnLink'">
+                <mat-icon class="add-icon" [style.color]="getStyle('miscellneous', 'link')?(theme?.value):'#000000'">
+                    {{getStyle('miscellneous', 'link')?'link_off':'insert_link'}}
+                </mat-icon>
             </button>
-            <button mat-stroked-icon-button color="primary" class="tool link" [matMenuTriggerFor]="anchor"
-                #anchorMenuTrigger="matMenuTrigger" title="Create Link">
-                <mat-icon class="add-icon">insert_link</mat-icon>
+            <button mat-stroked-icon-button color="primary" class="tool link" title="Remove Link"
+                (click)="setOutput('miscellneous','foreColor','#ff0000')">
+                <mat-icon [style.color]="'#ff0000'" class="add-icon">create</mat-icon>
             </button>
             <mat-menu #anchor="matMenu">
                 <form (click)="$event.stopPropagation()">
@@ -91,18 +94,15 @@
 
     <div class="subtools select">
         <div class="tool-list">
-            <button mat-stroked-icon-button color="primary" class="tool remove" title="Remove All"  (click)="removeAll()">
+            <button mat-stroked-icon-button color="primary" class="tool remove" title="Remove All"
+                (click)="removeAll()">
                 <mat-icon class="add-icon">delete_sweep</mat-icon>
             </button>
         </div>
         <div class="tool-list">
-            <button mat-stroked-icon-button color="primary" class="tool select-all" title="Select All"  (click)="selectAll()">
+            <button mat-stroked-icon-button color="primary" class="tool select-all" title="Select All"
+                (click)="selectAll()">
                 <mat-icon class="add-icon">select_all</mat-icon>
-            </button>
-        </div>
-        <div class="tool-list">
-            <button mat-stroked-icon-button color="primary" class="tool preview" title="Preview">
-                <mat-icon class="add-icon">visibility</mat-icon>
             </button>
         </div>
     </div>
