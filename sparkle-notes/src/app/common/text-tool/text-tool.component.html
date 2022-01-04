@@ -15,14 +15,10 @@
         <div class="tool-list">
             <button mat-stroked-icon-button color="primary" class="tool link" (click)="setAnchorLink($event)"
                 [matMenuTriggerFor]="anchor" #anchorMenuTrigger="matMenuTrigger"
-                [title]="getStyle('miscellneous', 'link')?'Create Link':'UnLink'">
+                [title]="getStyle('miscellneous', 'link')?'UnLink':'Create Link'">
                 <mat-icon class="add-icon" [style.color]="getStyle('miscellneous', 'link')?(theme?.value):'#000000'">
                     {{getStyle('miscellneous', 'link')?'link_off':'insert_link'}}
                 </mat-icon>
-            </button>
-            <button mat-stroked-icon-button color="primary" class="tool link" title="Remove Link"
-                (click)="setOutput('miscellneous','foreColor','#ff0000')">
-                <mat-icon [style.color]="'#ff0000'" class="add-icon">create</mat-icon>
             </button>
             <mat-menu #anchor="matMenu">
                 <form (click)="$event.stopPropagation()">
@@ -49,23 +45,57 @@
             </mat-menu>
         </div>
         <div class="tool-list miscellneous">
+            <button mat-stroked-icon-button color="primary" class="tool fontColor" [matMenuTriggerFor]="fontColor"
+                [style.color]="getStyle('miscellneous', 'foreColor')?getStyle('miscellneous', 'foreColor',true):'#000000'"
+                title="Font Color" #fontColorMenuTrigger="matMenuTrigger">
+                <mat-icon class="add-icon">
+                    create
+                </mat-icon>
+            </button>
+            <mat-menu #fontColor="matMenu">
+                <div style="display:flex;">
+                    <button mat-icon-button (click)="setOutput('miscellneous','foreColor','#000000')">
+                        <mat-icon [style.color]="'#000000'">disabled_by_default</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="setOutput('miscellneous','foreColor','#A60000')">
+                        <mat-icon [style.color]="'#A60000'">square</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="setOutput('miscellneous','foreColor','#2C0066')">
+                        <mat-icon [style.color]="'#2C0066'">square</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="setOutput('miscellneous','foreColor','#0CC078')">
+                        <mat-icon [style.color]="'#0CC078'">square</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="setOutput('miscellneous','foreColor','#E5BF00')">
+                        <mat-icon [style.color]="'#E5BF00'">square</mat-icon>
+                    </button>
+                </div>
+            </mat-menu>
+        </div>
+        <div class="tool-list miscellneous">
             <button mat-stroked-icon-button color="primary" class="tool highlight" [matMenuTriggerFor]="highlight"
-                title="Highlight">
-                <mat-icon class="add-icon">grade</mat-icon>
+                [style.backgroundColor]="getStyle('miscellneous', 'backColor')?getStyle('miscellneous', 'backColor',true):'#EFEFEF'"
+                title="Highlight" #highlightMenuTrigger="matMenuTrigger">
+                <mat-icon class="add-icon">
+                    insights
+                </mat-icon>
             </button>
             <mat-menu #highlight="matMenu">
                 <div style="display:flex;">
                     <button mat-icon-button (click)="setOutput('miscellneous','backColor','transparent')">
                         <mat-icon [style.color]="'#000000'">disabled_by_default</mat-icon>
                     </button>
-                    <button mat-icon-button (click)="setOutput('miscellneous','backColor','#A6C14B')">
-                        <mat-icon [style.color]="'#A6C14B'">square</mat-icon>
+                    <button mat-icon-button (click)="setOutput('miscellneous','backColor','#05CF02')">
+                        <mat-icon [style.color]="'#05CF02'">square</mat-icon>
                     </button>
-                    <button mat-icon-button (click)="setOutput('miscellneous','backColor','#E58B79')">
-                        <mat-icon [style.color]="'#E58B79'">square</mat-icon>
+                    <button mat-icon-button (click)="setOutput('miscellneous','backColor','#FF8C0A')">
+                        <mat-icon [style.color]="'#FF8C0A'">square</mat-icon>
                     </button>
-                    <button mat-icon-button (click)="setOutput('miscellneous','backColor','#B865BA')">
-                        <mat-icon [style.color]="'#B865BA'">square</mat-icon>
+                    <button mat-icon-button (click)="setOutput('miscellneous','backColor','#E9FA01')">
+                        <mat-icon [style.color]="'#E9FA01'">square</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="setOutput('miscellneous','backColor','#FC098F')">
+                        <mat-icon [style.color]="'#FC098F'">square</mat-icon>
                     </button>
                 </div>
             </mat-menu>

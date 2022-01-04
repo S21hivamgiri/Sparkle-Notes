@@ -31,7 +31,8 @@ export interface Command {
 
 export interface CommandActive {
     cmd: string;
-    active: boolean
+    active: boolean;
+    value?: string;
 }
 
 export interface GroupCommandActive {

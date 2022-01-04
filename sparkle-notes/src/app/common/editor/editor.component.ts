@@ -35,8 +35,22 @@ export class EditorComponent implements AfterViewInit {
         group: 'miscellneous', value: [{
           cmd: 'link',
           active: false
-        }]
-      })
+        },]
+      },
+        {
+          group: 'miscellneous', value: [{
+            cmd: 'backColor',
+            active: false,
+            value: 'rgba(0,0,0,0)',
+          }]
+        },
+        {
+          group: 'miscellneous', value: [{
+            cmd: 'foreColor',
+            active: false,
+            value: '#000000',
+          }]
+        });
     }
     this.commands = d;
   }
@@ -76,8 +90,15 @@ export class EditorComponent implements AfterViewInit {
           value.active = parent?.style.getPropertyValue('vertical-align') === 'sub'
         }
         if (value.cmd === 'link') {
-          console.log(parent?.getAttribute('href'))
           value.active = parent?.getAttribute('href') !== null;
+        }
+        if (value.cmd === 'backColor') {
+          value.active = parent?.style.getPropertyValue('background-color') !== '';
+          value.value = parent?.style.getPropertyValue('background-color');
+        }
+        if (value.cmd === 'foreColor') {
+          value.active = parent?.style.getPropertyValue('color') !== '';
+          value.value = parent?.style.getPropertyValue('color');
         }
         if (value.cmd === 'superscript') {
           value.active = parent?.style.getPropertyValue('vertical-align') === 'super'
