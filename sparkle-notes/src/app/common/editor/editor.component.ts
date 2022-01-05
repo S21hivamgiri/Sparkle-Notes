@@ -15,7 +15,7 @@ export class EditorComponent implements AfterViewInit {
   @Output() hasValue = new EventEmitter<boolean>()
   @Output() active = new EventEmitter<GroupCommandActive[]>()
   commands?: GroupCommandActive[];
-  selection?:{start:number, end:number};
+  selection?: { start: number, end: number };
 
   constructor(private renderer: Renderer2) {
     let d: GroupCommandActive[] = []
@@ -61,7 +61,7 @@ export class EditorComponent implements AfterViewInit {
 
   setSelection() {
     let text = window.getSelection();
-    this.selection= this.saveSelection(document.getElementById('editor')!)
+    this.selection = this.saveSelection(document.getElementById('editor')!)
     if (text?.type === 'Range') {
       this.getActive(text.getRangeAt(0).startContainer?.parentNode as HTMLElement);
       this.active.emit(this.commands);
@@ -147,12 +147,12 @@ export class EditorComponent implements AfterViewInit {
     };
   }
 
-  restoreSelection(containerEl:Node){
+  restoreSelection(containerEl: Node) {
     let doc = containerEl.ownerDocument, win = doc!.defaultView;
     let charIndex = 0, range = doc!.createRange();
     range.setStart(containerEl, 0);
     range.collapse(true);
-    let nodeStack = [containerEl], node:any, foundStart = false, stop = false;
+    let nodeStack = [containerEl], node: any, foundStart = false, stop = false;
 
     while (!stop && (node = nodeStack.pop())) {
       if (node.nodeType == Node.TEXT_NODE) {
@@ -173,7 +173,6 @@ export class EditorComponent implements AfterViewInit {
         }
       }
     }
-
     let sel = win?.getSelection();
     sel?.removeAllRanges();
     sel?.addRange(range);

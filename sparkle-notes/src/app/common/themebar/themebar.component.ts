@@ -12,9 +12,8 @@ export class ThemebarComponent implements OnInit {
   @Input() title = '';
   @Input() contentStarted = false;
   @Output() theme = new EventEmitter<Color>();
-  @Output() save = new EventEmitter();
+  @Output() save = new EventEmitter<string>();
 
-  constructor() { }
 
   colors = COLOR_DATA;
 
@@ -23,7 +22,7 @@ export class ThemebarComponent implements OnInit {
   }
 
   saveContent() {
-    this.save.emit();
+    this.save.emit(this.title);
   }
 
   setColor(color: Color) {

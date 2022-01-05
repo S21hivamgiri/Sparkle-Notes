@@ -1,4 +1,4 @@
-<app-themebar [contentStarted]="contentValue" (save)="save()" (theme)="setTheme($event)"></app-themebar>
+<app-themebar [contentStarted]="contentValue" (save)="save($event)" (theme)="setTheme($event)"></app-themebar>
 <div class="notes">
     <app-text-tool [active]="setActive" (removeAllText)="removeAll()" (selectAllText)="selectAll()"
         (command)="executeCommand($event)" [theme]="themeColor">
