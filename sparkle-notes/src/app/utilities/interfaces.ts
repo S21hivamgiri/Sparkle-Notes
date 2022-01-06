@@ -39,3 +39,23 @@ export interface GroupCommandActive {
     group: string; 
     value: CommandActive[]
 }
+
+export interface ThemeBar {
+    title: string;
+    linked: boolean;
+    bookmarked: boolean;
+}
+
+
+export interface SparkleData {
+    content: string|string[];
+    initialContent: string | string[];
+    hasUrl: boolean;
+    hashtags: boolean;
+    title: string;
+    bookmarked: boolean;
+    theme: Color;
+    type: Type;
+    timeCreated: Date;
+    timeEdited: Date;
+}

@@ -95,7 +95,7 @@ export const FILTER_DATA: Filter[] = [
 
 export const TYPE_DATA: Type[] = [
     { value: 'note', type: 'Notes', icon: 'description' },
-    { value: 'checkList', type: 'Checklists', icon: 'checklist' },
+    { value: 'checklist', type: 'Checklists', icon: 'checklist' },
     { value: 'todo', type: 'ToDos', icon: 'pending_actions' },
     { value: 'event', type: 'Events', icon: 'notifications' },
     { value: 'goals', type: '100 Goals', icon: 'auto_graph' },

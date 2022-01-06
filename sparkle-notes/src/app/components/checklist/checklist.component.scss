@@ -1,0 +1,37 @@
+.checklist {
+    margin: 0 100px 80px;
+
+    .list {
+        align-items: center;
+        border: 2px solid;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+
+        &.check {
+            justify-content: flex-start;
+            border-radius: 0;
+            padding: 10px 40px;
+            margin: 4px;
+        }
+
+        &.add-new-top {
+            margin-bottom: 10px;
+            font-weight: 700;
+            border-radius: 99em 99em 0 0;
+            border-bottom: 6px solid;
+        }
+
+        &.add-new {
+            margin-top: 10px;
+            border-top: 6px solid;
+            border-radius: 0 0 99em 99em;
+            font-weight: 700;
+        }
+
+        .text-button {
+            margin: 0 20px;
+            text-transform: uppercase;
+        }
+    }
+}

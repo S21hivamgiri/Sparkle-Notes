@@ -1,0 +1,8 @@
+<div class="editor-wrapper">
+    <app-editor #editor [theme]="data" height="25vh" (editorContent)="setContent($event);"></app-editor>
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-button (click)="closeDialog()">Close</button>
+    <button mat-button (click)="saveAndNext()">Save and Next</button>
+    <button mat-button color="primary" (click)="complete()">Complete and Close</button>
+</div>

@@ -21,10 +21,16 @@ import { ThemebarComponent } from './common/themebar/themebar.component';
 import { MatInputModule } from '@angular/material/input';
 import { EditorComponent } from './common/editor/editor.component';
 import { AddNotesComponent } from './components/add-notes/add-notes.component';
+import { ChecklistComponent } from './components/checklist/checklist.component';
+import { ViewNotesComponent } from './components/view-notes/view-notes.component';
+import { HashTagsComponent } from './components/hash-tags/hash-tags.component';
+import { CheckListDialog} from './components/checklist/checklist.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CheckListDialog,
     LayoutComponent,
     NavbarComponent, 
     AnimationHomepageComponent,
@@ -34,7 +40,10 @@ import { AddNotesComponent } from './components/add-notes/add-notes.component';
     TextToolComponent,
     ThemebarComponent,
     EditorComponent,
-    AddNotesComponent
+    AddNotesComponent,
+    ChecklistComponent,
+    ViewNotesComponent,
+    HashTagsComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +53,8 @@ import { AddNotesComponent } from './components/add-notes/add-notes.component';
     MatSelectModule,
     MatMenuModule,
     MatDividerModule,
-    MatIconModule,
+    MatIconModule, 
+    MatDialogModule,
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { COLOR_DATA } from 'src/app/utilities/constants';
-import { Color } from 'src/app/utilities/interfaces';
+import { Color, ThemeBar } from 'src/app/utilities/interfaces';
 
 @Component({
   selector: 'app-themebar',
@@ -8,13 +8,14 @@ import { Color } from 'src/app/utilities/interfaces';
   styleUrls: ['./themebar.component.scss']
 })
 export class ThemebarComponent implements OnInit {
-  @Input() themeColor = COLOR_DATA[3];
+  @Input() themeColor = COLOR_DATA[4];
   @Input() title = '';
   @Input() contentStarted = false;
   @Output() theme = new EventEmitter<Color>();
-  @Output() save = new EventEmitter<string>();
+  @Output() save = new EventEmitter<ThemeBar>();
 
-
+  marked = false;
+  autoLink = true
   colors = COLOR_DATA;
 
   ngOnInit(): void {
@@ -22,7 +23,11 @@ export class ThemebarComponent implements OnInit {
   }
 
   saveContent() {
-    this.save.emit(this.title);
+    this.save.emit({
+      title: this.title,
+      bookmarked: this.marked,
+      linked: this.autoLink
+    });
   }
 
   setColor(color: Color) {

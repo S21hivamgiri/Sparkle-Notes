@@ -27,9 +27,18 @@
             <mat-icon>title</mat-icon>
         </button>
     </mat-form-field>
-    <button mat-icon-button class="save-color" (click)="saveContent()" [disabled]="!(contentStarted && title)">
-        <mat-icon class="color-icon" [style]="'color:'+themeColor.value" title="Save">
-            send
+    <button mat-icon-button class="save-color" (click)="marked=!marked"
+        [title]="marked?'Remove Bookmark':'BookMark as Important, will be shown at top.'">
+        <mat-icon class="color-icon" [style]="'color:'+ themeColor.value">
+            {{marked?'star':'star_border'}}
         </mat-icon>
+    </button><button mat-icon-button class="save-color" (click)="autoLink=!autoLink"
+        [title]="autoLink?'Remove Autolink':'AuttoLink will automatically Process Your email and urls.'">
+        <mat-icon class="color-icon" [style]="'color:'+ themeColor.value">
+            {{autoLink?'leak_remove':'leak_add'}}
+        </mat-icon>
+    </button>
+    <button mat-icon-button class="save-color" (click)="saveContent()" *ngIf="(contentStarted && title)" title="Save">
+        <mat-icon class="color-icon" [style]="'color:'+themeColor.value">send</mat-icon>
     </button>
 </div>

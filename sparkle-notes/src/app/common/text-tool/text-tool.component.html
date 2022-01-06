@@ -17,7 +17,7 @@
                 [matMenuTriggerFor]="anchor" #anchorMenuTrigger="matMenuTrigger"
                 [title]="getStyle('miscellneous', 'link')?'UnLink':'Create Link'">
                 <mat-icon class="add-icon" [style.color]="getStyle('miscellneous', 'link')?(theme?.value):'#000000'">
-                    {{getStyle('miscellneous', 'link')?'link_off':'insert_link'}}
+                    {{getStyle('miscellneous', 'link')?'link_off':'add_link'}}
                 </mat-icon>
             </button>
             <mat-menu #anchor="matMenu">

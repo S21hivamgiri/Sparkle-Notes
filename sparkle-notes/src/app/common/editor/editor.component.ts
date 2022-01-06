@@ -8,12 +8,14 @@ import { Color, Command, CommandActive, GroupCommandActive } from 'src/app/utili
   styleUrls: ['./editor.component.scss']
 })
 export class EditorComponent implements AfterViewInit {
-  @Input() theme?: Color;
   @ViewChild('editor', { static: false }) editorBar?: ElementRef;
+  @Input() theme?: Color;
   @Input() content = '';
-  @Output() editorContent = new EventEmitter<string>()
-  @Output() hasValue = new EventEmitter<boolean>()
-  @Output() active = new EventEmitter<GroupCommandActive[]>()
+  @Input() height = '50vh';
+  @Output() editorContent = new EventEmitter<string>();
+  @Output() hasValue = new EventEmitter<boolean>();
+  @Output() active = new EventEmitter<GroupCommandActive[]>();
+
   commands?: GroupCommandActive[];
   selection?: { start: number, end: number };
 
@@ -56,7 +58,7 @@ export class EditorComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.renderer.setProperty(this.editorBar?.nativeElement, 'innerHTML', this.content || '<span></span>');
+    this.renderer.setProperty(this.editorBar?.nativeElement, 'innerHTML', this.content || '&nbsp;');
   }
 
   setSelection() {
@@ -66,11 +68,18 @@ export class EditorComponent implements AfterViewInit {
       this.getActive(text.getRangeAt(0).startContainer?.parentNode as HTMLElement);
       this.active.emit(this.commands);
     }
+    else {
+      this.commands?.forEach((data) => {
+        data.value.forEach((value) => {
+          value.active = false;
+        })
+      });
+    }
   }
 
   removeAll() {
-    this.content = '<span > </span>';
-    this.renderer.setProperty(this.editorBar?.nativeElement, 'innerHTML', '<span></span>');
+    this.content = '&nbsp;';
+    this.renderer.setProperty(this.editorBar?.nativeElement, 'innerHTML', '&nbsp;');
     this.hasValue.emit(false);
   }
 
@@ -119,8 +128,16 @@ export class EditorComponent implements AfterViewInit {
     let targetText = (e.target as HTMLInputElement).innerText;
     this.hasValue.emit(targetText ? true : false);
     if (targetText === '') {
-      this.renderer.setProperty(this.editorBar?.nativeElement, 'innerHTML', '<span></span>');
+      this.renderer.setProperty(this.editorBar?.nativeElement, 'innerHTML', '&nbsp;');
     }
+  }
+
+  addBreak(e: Event) {
+    e.preventDefault()
+    document.designMode = "on";
+    document.execCommand('insertLineBreak');
+    document.designMode = "off";
+    this.editorBar?.nativeElement.focus();
   }
 
   executeCommand(e: string, value?: string) {

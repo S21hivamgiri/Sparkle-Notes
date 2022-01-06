@@ -1,0 +1,23 @@
+<app-themebar [contentStarted]="checkList.length?true:false" (save)="save($event)" (theme)="setTheme($event)"></app-themebar>
+<div class="checklist">
+    <div class="add-new-top list" [style.borderColor]="themeColor?.light" [style.backgroundColor]="themeColor?.lightest"
+        (click)="addnew(true)">
+        <button mat-fab [style.backgroundColor]="themeColor?.value">
+            <mat-icon [style.color]="'#FFFFFF'">add</mat-icon>
+        </button>
+        <span [style.color]="themeColor?.value" class="text-button">Add New List</span>
+    </div>
+    <ng-container *ngFor="let data of checkList">
+        <div class="check list" [style.borderColor]="themeColor?.light"
+            [style.backgroundColor]="themeColor?.lightest">
+            <span class="check-text" [innerHTML]="data"></span>
+        </div>
+    </ng-container>
+    <div class="add-new list" [style.borderColor]="themeColor?.light" [style.backgroundColor]="themeColor?.lightest"
+        (click)="addnew(false)">
+        <button mat-fab [style.backgroundColor]="themeColor?.value">
+            <mat-icon [style.color]="'#FFFFFF'">add</mat-icon>
+        </button>
+        <span [style.color]="themeColor?.value" class="text-button">Add New List</span>
+    </div>
+</div>
