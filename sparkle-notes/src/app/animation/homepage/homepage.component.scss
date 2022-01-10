@@ -1,28 +1,30 @@
 @import '../../../styles.scss';
 
-
-.pointer {
-    animation: skew 3s infinite;
-    transform: translate(0, 0) skew(0deg);
-    animation-direction: alternate;
-}
-
 .sparkle {
-    border: 1px solid $sparkle-notes-blue;
-    padding:20px;
     background: $sparkle-notes-white;
+    padding: 20px;
 }
 
 .logo {
     z-index: -10;
 }
 
-@keyframes skew {
-    0% {
-        transform: translate(0, 0) skewX(0deg);
-    }
+.svg-wrapper {
+    position: relative;
 
-    100% {
-        transform: translate(-90px, -60px) skewX(20deg);
+    .add-new-wrapper {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        width: 100%;
+
+        .add-new {
+            margin-top: 300px;
+            background-color: $sparkle-notes-yellow;
+            border: 1px solid $sparkle-notes-blue;
+            border-radius: 999rem;
+            color: $sparkle-notes-blue;
+            z-index: 10;
+        }
     }
 }

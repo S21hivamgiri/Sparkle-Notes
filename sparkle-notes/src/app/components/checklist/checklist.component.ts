@@ -18,7 +18,7 @@ export class ChecklistComponent {
 
   constructor(public dialog: MatDialog) { }
 
-  getNonUrlString(index:number) {
+  getNonUrlString(index: number) {
     let hasUrlRegex = /<\s*a[^>]*>(.*?)<\s*\/*a>/g
     if (this.checkList[index].match(hasUrlRegex)) {
       this.hasUrl = true;
@@ -26,7 +26,7 @@ export class ChecklistComponent {
     return this.checkList[index].replace(hasUrlRegex, "");
   }
 
-  replaceUrl(index:number) {
+  replaceUrl(index: number) {
     let urlRegex = /((https?|ftp|file|http):\/\/)[-A-Za-z0-9+&@#\/%\?=~_|!:,.]+[-A-Za-z0-9+&@#\/%=~_|]/g;
     let matches = new Set(this.checkList[index].match(urlRegex));
     matches?.forEach((url: string) => {
@@ -37,7 +37,7 @@ export class ChecklistComponent {
     });
   }
 
-  replaceEmail(index:number) {
+  replaceEmail(index: number) {
     let emailRegex = /(([^ <>()[\]\\.,;: \s @\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/g;
     let matches = new Set(this.checkList[index].match(emailRegex));
     matches?.forEach((email: string) => {
@@ -52,8 +52,8 @@ export class ChecklistComponent {
     let matches = new Set(data.match(tagsRegex));
     matches?.forEach((tag: string) => {
       tag = tag.split('#')[1]
-      if (!(this.hashTags.indexOf(tag)>-1))
-      this.hashTags.push(tag);
+      if (!(this.hashTags.indexOf(tag) > -1))
+        this.hashTags.push(tag);
     });
   }
 
@@ -70,7 +70,7 @@ export class ChecklistComponent {
     if (!themeData.linked) {
       this.checkList = content;
     }
-    
+
     let saveData = {
       content: this.checkList,
       initialContent: content,
@@ -106,13 +106,20 @@ export class ChecklistComponent {
       data: this.themeColor,
     });
 
-    dialogRef.afterClosed().subscribe((result: string) => {
+    dialogRef.afterClosed().subscribe((result: { type: string, content: string }) => {
       if (result) {
-        if (isTop) {
-          this.checkList.unshift(result);
-        }
-        else {
-          this.checkList.push(result)
+        const aux = document.createElement('div');
+        aux.innerHTML = result.content; //parses the html
+        if (aux.innerText.trim()) {
+          if (isTop) {
+            this.checkList.unshift(result.content);
+          }
+          else {
+            this.checkList.push(result.content)
+          }
+          if (result.type === 'next') {
+            this.addnew(isTop)
+          }
         }
       }
     });
@@ -132,10 +139,12 @@ export class CheckListDialog {
   ) { }
 
   complete() {
-    this.dialogRef.close(this.content);
+    this.dialogRef.close({ type: 'complete', content: this.content });
   }
 
-  saveAndNext() { }
+  saveAndNext() {
+    this.dialogRef.close({ type: 'next', content: this.content });
+  }
 
   closeDialog() {
     this.dialogRef.close();

@@ -1,6 +1,6 @@
-<div class='background-editor' [style.borderColor]="theme?.value"[style.height]="height"
+<div class='background-editor' [style.borderColor]="theme?.value" [style.minHeight]="height"
     [style.backgroundImage]="'repeating-linear-gradient('+theme?.lightest+' 0px, '+theme?.lightest+' 29px, '+theme?.value+' 30px)'">
-    <div #editor id="editor" [style.height]="height" (input)="inputContent($event)" (blur)="setContent($event)" (keydown.enter)="addBreak($event)" (mouseup)="setSelection();"
+    <div #editor id="editor" [style.minHeight]="height" (input)="inputContent($event)" (blur)="setContent($event)" (keydown.enter)="addBreak($event)" (mouseup)="setSelection();"
         [style.backgroundImage]="'repeating-linear-gradient('+theme?.lightest+' 0px, '+theme?.lightest+' 29px, '+theme?.value+' 30px)'"
         [style.borderColor]="theme?.value" class='main-editor' contenteditable="true" spellcheck='false'>
     </div>

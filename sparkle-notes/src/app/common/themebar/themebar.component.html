@@ -1,4 +1,4 @@
-<div class="theme-bar" [style.backgroundColor]="themeColor.light">
+<div class="theme-bar" [style.backgroundColor]="themeColor.light" [style.borderColor]="themeColor.value">
     <div class="color-button">
         <button mat-icon-button class="add-color" [matMenuTriggerFor]="color">
             <mat-icon class="main-color-icon" [style]="'color:'+themeColor.value" [title]="themeColor.color">
@@ -17,7 +17,7 @@
             </div>
         </mat-menu>
     </div>
-    <mat-form-field class="title-bar" appearance="fill">
+    <mat-form-field class="title-bar" [class.title-animation]="!title" appearance="fill">
         <mat-label>Enter title</mat-label>
         <input matInput type="text" [(ngModel)]="title" autocomplete="off">
         <button *ngIf="title" matSuffix mat-icon-button aria-label="Clear" title="Clear" (click)="title=''">

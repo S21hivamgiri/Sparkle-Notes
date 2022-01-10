@@ -3,8 +3,8 @@ import { Color, Command, Filter, Sort, Type } from "./interfaces";
 export const COLOR_DATA: Color[] = [
     {
         color: 'SPARKLE',
-        value: '#D9C39E',
-        light: '#fceacc',
+        value: '#ceab73',
+        light: '#D9C39E',
         lightest: '#fff9ef'
     },
     {
@@ -90,7 +90,7 @@ export const FILTER_DATA: Filter[] = [
     { value: 'note', title: 'Notes', icon: 'description' },
     { value: 'event', title: 'Events', icon: 'notifications' },
     { value: 'link', title: 'With Links/Tags', icon: 'tag' },
-    { value: 'goals', title: '100 Goals', icon: 'auto_graph' },
+    { value: 'goals', title: 'Goals', icon: 'auto_graph' },
 ]
 
 export const TYPE_DATA: Type[] = [
@@ -98,7 +98,18 @@ export const TYPE_DATA: Type[] = [
     { value: 'checklist', type: 'Checklists', icon: 'checklist' },
     { value: 'todo', type: 'ToDos', icon: 'pending_actions' },
     { value: 'event', type: 'Events', icon: 'notifications' },
-    { value: 'goals', type: '100 Goals', icon: 'auto_graph' },
+    { value: 'goals', type: 'Goals', icon: 'auto_graph' },
+]
+
+export const GOALS_DATA: Type[] = [
+    { value: 'lifetime', type: 'Lifetime Goals', icon: 'auto_graph' },
+    { value: 'yearly', type: 'Pent-Yearly Goals', icon: 'date_range' },
+    { value: 'yearly', type: 'Yearly Goals', icon: 'list_alt' },
+    { value: 'half-yearly', type: 'Half Yearly Goals', icon: 'grading' },
+    { value: 'quaterly', type: 'Quaterly Goals', icon: 'playlist_add_check' },
+    { value: 'weekly', type: 'Weekly Goals', icon: 'calendar_view_week' },
+    { value: 'monthly', type: 'Monthly Goals', icon: 'calendar_today' },
+    { value: 'daily ', type: 'Daily Goals', icon: 'calendar_view_day' },
 ]
 
 const FORMAT_COMMAND_DATA: Command[] = [
@@ -114,7 +125,7 @@ const TEXT_COMMAND_DATA: Command[] = [
 ]
 
 
-export const COMMAND_DATA:{[key:string]:Command[]}={
+export const COMMAND_DATA: { [key: string]: Command[] } = {
     text: TEXT_COMMAND_DATA,
     format: FORMAT_COMMAND_DATA,
 }
