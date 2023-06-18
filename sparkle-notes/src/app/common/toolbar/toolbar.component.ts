@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { COLOR_DATA, DEFAULT_COLOR_VALUE, FILTER_DATA, SORT_DATA, TYPE_DATA } from 'src/app/utilities/constants';
 
@@ -15,8 +15,8 @@ export class ToolbarComponent implements OnInit {
   filters = FILTER_DATA;
   sorts = SORT_DATA;
   types = TYPE_DATA;
-  filter = new FormControl();
-  sort = new FormControl(this.sorts[0].value);
+  filter = new UntypedFormControl();
+  sort = new UntypedFormControl(this.sorts[0].value);
   sortDsc=false;
   defaultTheme = DEFAULT_COLOR_VALUE
 

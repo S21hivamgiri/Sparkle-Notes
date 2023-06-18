@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 import { COMMAND_DATA } from 'src/app/utilities/constants';
 import { Color, GroupCommandActive } from 'src/app/utilities/interfaces';
 
@@ -19,7 +19,7 @@ export class TextToolComponent {
   @Output() selectAllText = new EventEmitter();
   @Output() removeAllText = new EventEmitter();
 
-  anchorLink = new FormControl('', [Validators.required, Validators.pattern(reg)])
+  anchorLink = new UntypedFormControl('', [Validators.required, Validators.pattern(reg)])
   commands = COMMAND_DATA;
 
   removeAll() {
