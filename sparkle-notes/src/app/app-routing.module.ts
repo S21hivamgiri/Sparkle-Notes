@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddNotesComponent } from './components/add-notes/add-notes.component';
 import { ChecklistComponent } from './components/checklist/checklist.component';
 import { HashTagsComponent } from './components/hash-tags/hash-tags.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ViewNotesComponent } from './components/view-notes/view-notes.component';
+import { NgModule } from '@angular/core';
 
 const routes: Routes = [
   {

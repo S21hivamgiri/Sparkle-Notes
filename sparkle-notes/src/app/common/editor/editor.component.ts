@@ -11,7 +11,7 @@ export class EditorComponent implements AfterViewInit {
   @ViewChild('editor', { static: false }) editorBar?: ElementRef;
   @Input() theme?: Color;
   @Input() content = '';
-  @Input() height = '50vh';
+  @Input() height = '300px';
   @Output() editorContent = new EventEmitter<string>();
   @Output() hasValue = new EventEmitter<boolean>();
   @Output() active = new EventEmitter<GroupCommandActive[]>();
@@ -133,21 +133,16 @@ export class EditorComponent implements AfterViewInit {
   }
 
   addBreak(e: Event) {
-    e.preventDefault()
-    document.designMode = "on";
+    e.preventDefault();
     document.execCommand('insertLineBreak');
-    document.designMode = "off";
     this.editorBar?.nativeElement.focus();
   }
 
   executeCommand(e: string, value?: string) {
     this.restoreSelection(document.getElementById('editor')!)
     let sel = window.getSelection();
-    document.designMode = "on";
     document.execCommand('styleWithCSS', false, 'true');
     document.execCommand(e, false, value);
-    document.designMode = "off";
-    sel?.removeAllRanges();
   }
 
   saveSelection(containerEl: HTMLElement) {

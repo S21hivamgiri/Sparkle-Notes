@@ -1,7 +1,7 @@
-import { Component, Inject, Optional } from '@angular/core';
 import { Color, GroupCommandActive, ThemeBar, Type } from 'src/app/utilities/interfaces';
 import { TYPE_DATA } from 'src/app/utilities/constants';
-import { MatLegacyDialog as MatDialog, MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
+import { Component, Inject, Optional } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-checklist',
@@ -14,7 +14,7 @@ export class ChecklistComponent {
   hasUrl = false;
   setActive?: GroupCommandActive[];
   hashTags: string[] = [];
-  title: string = '';
+  title = '';
 
   constructor(public dialog: MatDialog) { }
 
@@ -131,7 +131,7 @@ export class ChecklistComponent {
   templateUrl: 'check-list-dialog.html'
 })
 export class CheckListDialog {
-  content: string = '';
+  content = '';
 
   constructor(
     @Optional() public dialogRef: MatDialogRef<CheckListDialog>,

@@ -1,15 +1,12 @@
 <div class="theme-bar" [style.backgroundColor]="themeColor.light" [style.borderColor]="themeColor.value">
     <div class="color-button">
-        <button mat-icon-button class="add-color" [matMenuTriggerFor]="color">
-            <mat-icon class="main-color-icon" [style]="'color:'+themeColor.value" [title]="themeColor.color">
-                square
-            </mat-icon>
+        <button class="add-color" [matMenuTriggerFor]="color" [style]="'background-color:'+themeColor.value" [title]="themeColor.color">
         </button>
         <mat-menu #color="matMenu">
             <div class="color-menu">
                 <ng-container *ngFor="let color of colors">
                     <button mat-icon-button class="pick-color" [title]="color.color" (click)="setColor(color)">
-                        <mat-icon color="color-icon" [style]="'color:'+color.value">
+                        <mat-icon [style]="'color:'+color.value">
                             {{color.color!==themeColor.color?'square':'disabled_by_default'}}
                         </mat-icon>
                     </button>
@@ -17,7 +14,7 @@
             </div>
         </mat-menu>
     </div>
-    <mat-form-field class="title-bar" [class.title-animation]="!title" appearance="fill">
+    <mat-form-field class="title-bar" appearance="fill">
         <mat-label>Enter title</mat-label>
         <input matInput type="text" [(ngModel)]="title" autocomplete="off">
         <button *ngIf="title" matSuffix mat-icon-button aria-label="Clear" title="Clear" (click)="title=''">
@@ -32,13 +29,14 @@
         <mat-icon class="color-icon" [style]="'color:'+ themeColor.value">
             {{marked?'star':'star_border'}}
         </mat-icon>
-    </button><button mat-icon-button class="save-color" (click)="autoLink=!autoLink"
-        [title]="autoLink?'Remove Autolink':'AuttoLink will automatically Process Your email and urls.'">
+    </button>
+    <button mat-icon-button class="save-color" (click)="autoLink=!autoLink"
+        [title]="autoLink?'Remove Autolink, will not automatically process the email and urls links':'AutoLink will automatically process the email and urls links.'">
         <mat-icon class="color-icon" [style]="'color:'+ themeColor.value">
             {{autoLink?'leak_remove':'leak_add'}}
         </mat-icon>
     </button>
-    <button mat-icon-button class="save-color" (click)="saveContent()" *ngIf="(contentStarted && title)" title="Save">
+    <button mat-icon-button class="save-color" (click)="saveContent()" [disabled]="!(title && contentStarted)" title="Save">
         <mat-icon class="color-icon" [style]="'color:'+themeColor.value">send</mat-icon>
     </button>
 </div>
