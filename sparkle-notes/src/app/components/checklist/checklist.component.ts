@@ -1,7 +1,7 @@
 import { Component, Inject, Optional } from '@angular/core';
 import { Color, GroupCommandActive, ThemeBar, Type } from 'src/app/utilities/interfaces';
 import { TYPE_DATA } from 'src/app/utilities/constants';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog, MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 
 @Component({
   selector: 'app-checklist',
