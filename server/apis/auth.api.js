@@ -60,6 +60,116 @@ router.post('/signup', function (req, res) {
     });
 });
 
+
+router.post('/signup-admin', function (req, res) {
+    var body = req.body;
+    var obj = new User(body);
+
+    if (!req.body.email || !req.body.password || !req.body.firstName || !req.body.country || !req.body.contact) {
+        res.json({
+            success: false,
+            message: 'Data not sufficient'
+        });
+        return;
+    }
+    let salt = bcrypt.genSaltSync(10);
+    let password = md5(obj['password'])
+    obj['password'] = bcrypt.hashSync(password, salt);
+
+    User.find({
+        email: obj.email
+    }, (error, emailData) => {
+        if (emailData && emailData.length) {
+            return res.json({
+                success: false,
+                message: 'User Already Registered'
+            });
+        }
+
+        Role.findOne({
+            name: 'Admin'
+        }).exec(
+            function (err, data) {
+                if (err) {
+                    return res.send(err);
+                }
+                obj.roles = [];
+                obj.playlist = [];
+                obj.loginTime = new Date();
+                obj.initials = obj.firstName.charAt(0);
+                const id = mongoose.Types.ObjectId(data._id);
+                obj.roles.push(id);
+                obj.save(function (err) {
+                    if (err) {
+                        return res.json({
+                            success: false,
+                            message: 'Unable to create User'
+                        });
+                    }
+                    return res.json({
+                        success: true,
+                        message: 'User created Successfully'
+                    });
+                });
+            });
+    });
+});
+
+
+router.post('/signup-author', function (req, res) {
+    var body = req.body;
+    var obj = new User(body);
+
+    if (!req.body.email || !req.body.password || !req.body.firstName || !req.body.country || !req.body.contact) {
+        res.json({
+            success: false,
+            message: 'Data not sufficient'
+        });
+        return;
+    }
+    let salt = bcrypt.genSaltSync(10);
+    let password = md5(obj['password'])
+    obj['password'] = bcrypt.hashSync(password, salt);
+
+    User.find({
+        email: obj.email
+    }, (error, emailData) => {
+        if (emailData && emailData.length) {
+            return res.json({
+                success: false,
+                message: 'User Already Registered'
+            });
+        }
+
+        Role.findOne({
+            name: 'Author'
+        }).exec(
+            function (err, data) {
+                if (err) {
+                    return res.send(err);
+                }
+                obj.roles = [];
+                obj.playlist = [];
+                obj.loginTime = new Date();
+                obj.initials = obj.firstName.charAt(0);
+                const id = mongoose.Types.ObjectId(data._id);
+                obj.roles.push(id);
+                obj.save(function (err) {
+                    if (err) {
+                        return res.json({
+                            success: false,
+                            message: 'Unable to create User'
+                        });
+                    }
+                    return res.json({
+                        success: true,
+                        message: 'User created Successfully'
+                    });
+                });
+            });
+    });
+});
+
 router.post('/login', function (req, res) {
     if (!req.body.email || !req.body.password) {
         res.json({

@@ -1,9 +1,15 @@
 const mongoose = require('mongoose');
-const connection = mongoose.connect('mongodb://localhost:27017/musicmania', { useNewUrlParser: true });
+async function connect() {
+    try {
+        await mongoose.connect('mongodb://0.0.0.0:27017/sparklenote', {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log("connected to MongoDB");
+    }
+    catch {
+        console.log('error');
+    }
+}
 
-mongoose.connection.on('error', err => {
-    console.log(err);
-});
-mongoose.connection.on('connected', res => {
-    console.log('connected!');
-})
+connect();
