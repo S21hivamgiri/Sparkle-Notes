@@ -1,4 +1,4 @@
-import { Color, Command, Filter, Sort, Type } from "./interfaces";
+import { Color, Command, Filter, Sort, NoteType } from "./interfaces";
 
 export const COLOR_DATA: Color[] = [
     {
@@ -81,7 +81,7 @@ export const SORT_DATA: Sort[] = [
     { value: 'date_created', title: 'Date Created', icon: 'movie_filter' },
     { value: 'date_remainder', title: 'Date Remainder', icon: 'notification_important' },
     { value: 'color', title: 'Color', icon: 'palette' },
-    { value: 'type', title: 'Content Type', icon: 'category' }
+    { value: 'type', title: 'Content NoteType', icon: 'category' }
 ]
 
 export const FILTER_DATA: Filter[] = [
@@ -93,7 +93,7 @@ export const FILTER_DATA: Filter[] = [
     { value: 'goals', title: 'Goals', icon: 'auto_graph' },
 ]
 
-export const TYPE_DATA: Type[] = [
+export const TYPE_DATA: NoteType[] = [
     { value: 'note', type: 'Notes', icon: 'description' },
     { value: 'checklist', type: 'Checklists', icon: 'checklist' },
     { value: 'todo', type: 'ToDos', icon: 'pending_actions' },
@@ -101,7 +101,7 @@ export const TYPE_DATA: Type[] = [
     { value: 'goals', type: 'Goals', icon: 'auto_graph' },
 ]
 
-export const GOALS_DATA: Type[] = [
+export const GOALS_DATA: NoteType[] = [
     { value: 'lifetime', type: 'Lifetime Goals', icon: 'auto_graph' },
     { value: 'yearly', type: 'Pent-Yearly Goals', icon: 'date_range' },
     { value: 'yearly', type: 'Yearly Goals', icon: 'list_alt' },

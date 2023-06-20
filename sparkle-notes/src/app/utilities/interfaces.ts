@@ -17,7 +17,7 @@ export interface Filter {
     value: string;
 }
 
-export interface Type {
+export interface NoteType {
     type: string;
     value: string;
     icon: string;
@@ -51,11 +51,11 @@ export interface SparkleData {
     content: string|string[];
     initialContent: string | string[];
     hasUrl: boolean;
-    hashtags: boolean;
+    hashtags: string[];
     title: string;
     bookmarked: boolean;
-    theme: Color;
-    type: Type;
+    theme: string;
+    type: string;
     timeCreated: Date;
     timeEdited: Date;
 }

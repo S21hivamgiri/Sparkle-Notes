@@ -3,21 +3,22 @@
 .theme-bar {
     align-items: center;
     border: 3px solid;
-    border-radius: 0 0 50px 50px;
     border-top: 0;
     display: flex;
     gap: 30px;
     height: 90px;
     justify-content: flex-start;
-    padding: 0 $sparkle-body-margin;
+    margin: 0 $sparkle-body-margin;
+    border-radius: 10px 10px 0 0;
+    padding: 0 10px;
 
     .add-color {
         border: 3px solid $sparkle-notes-black;
         border-radius: 0;
         display: flex;
+        height: 40px;
         justify-content: center;
         padding-top: 3px;
-        height: 40px;
         width: 40px;
     }
 
@@ -39,7 +40,7 @@
     .title-bar {
         background-color: rgba(0, 0, 0, 0.1);
         border-radius: 10px;
-        flex-grow:1;
+        flex-grow: 1;
     }
 
     ::ng-deep {

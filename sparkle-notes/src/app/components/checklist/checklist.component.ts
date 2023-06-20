@@ -1,4 +1,4 @@
-import { Color, GroupCommandActive, ThemeBar, Type } from 'src/app/utilities/interfaces';
+import { Color, GroupCommandActive, ThemeBar, NoteType } from 'src/app/utilities/interfaces';
 import { TYPE_DATA } from 'src/app/utilities/constants';
 import { Component, Inject, Optional } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -86,9 +86,9 @@ export class ChecklistComponent {
     console.log(saveData);
   }
 
-  getType(checkList: string): Type | null {
+  getType(checkList: string): NoteType | null {
     let index = 0;
-    TYPE_DATA.forEach((data: Type, i) => {
+    TYPE_DATA.forEach((data: NoteType, i) => {
       if (data.value === checkList) {
         index = i;
       }

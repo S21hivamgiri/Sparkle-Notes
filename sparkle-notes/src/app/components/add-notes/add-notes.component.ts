@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { Color, GroupCommandActive, ThemeBar, Type } from 'src/app/utilities/interfaces';
+import { Color, GroupCommandActive, SparkleData, ThemeBar } from 'src/app/utilities/interfaces';
 import { EditorComponent } from 'src/app/common/editor/editor.component';
-import { TYPE_DATA } from 'src/app/utilities/constants';
 
 @Component({
   selector: 'app-add-notes',
@@ -90,31 +89,20 @@ export class AddNotesComponent {
     if (!themeData.linked) {
       this.content = content;
     }
-    let saveData = {
+    let saveData: SparkleData = {
       content: this.content,
       initialContent: content,
       hasUrl: this.hasUrl,
       hashtags: this.hashTags,
-      title: themeData.title,
+      title: themeData.title ||'[Untitled]',
       bookmarked: themeData.bookmarked,
-      theme: this.themeColor,
-      type: this.getType("note"),
+      theme: this.themeColor!.color,
+      type:"note",
       timeCreated: new Date(),
       timeEdited: new Date(),
     }
     console.log(saveData);
   }
-
-  getType(checkList: string): Type {
-    let index = 0;
-    TYPE_DATA.forEach((data: Type, i) => {
-      if (data.value === checkList) {
-        index = i;
-      }
-    });
-    return TYPE_DATA[index];
-  }
-
 
   setTheme(data: Color) {
     this.themeColor = data;

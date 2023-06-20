@@ -36,7 +36,7 @@
             {{autoLink?'leak_remove':'leak_add'}}
         </mat-icon>
     </button>
-    <button mat-icon-button class="save-color" (click)="saveContent()" [disabled]="!(title && contentStarted)" title="Save">
+    <button mat-icon-button class="save-color" (click)="saveContent()" [disabled]="!contentStarted" title="Save">
         <mat-icon class="color-icon" [style]="'color:'+themeColor.value">send</mat-icon>
     </button>
 </div>
