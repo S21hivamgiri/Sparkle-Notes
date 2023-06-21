@@ -1,6 +1,7 @@
 <div class="theme-bar" [style.backgroundColor]="themeColor.light" [style.borderColor]="themeColor.value">
     <div class="color-button">
-        <button class="add-color" [matMenuTriggerFor]="color" [style]="'background-color:'+themeColor.value" [title]="themeColor.color">
+        <button class="add-color" [matMenuTriggerFor]="color" [style]="'background-color:'+themeColor.value"
+            [title]="themeColor.color">
         </button>
         <mat-menu #color="matMenu">
             <div class="color-menu">

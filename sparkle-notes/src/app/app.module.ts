@@ -26,6 +26,7 @@ import { CheckListDialog} from './components/checklist/checklist.component';
 import { NgModule } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
+import { LoginScreenComponent } from './common/login-screen/login-screen.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     AddNotesComponent,
     ChecklistComponent,
     ViewNotesComponent,
-    HashTagsComponent
+    HashTagsComponent,
+    LoginScreenComponent
   ],
   imports: [
     BrowserModule,
